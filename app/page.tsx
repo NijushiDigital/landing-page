@@ -3,6 +3,7 @@ import { Hero } from '@/components/hero'
 import { Features } from '@/components/features'
 import { CTA } from '@/components/cta'
 import { Footer } from '@/components/footer'
+import { SocialLinks } from '@/components/social'
 
 export default function Page() {
   return (
@@ -12,6 +13,9 @@ export default function Page() {
         <Hero />
         <div className="border-t border-border" />
         <Features />
+                <div className="border-t border-border" />
+      
+        <SocialLinks />
         <CTA />
       </main>
       <Footer />
