@@ -28,7 +28,6 @@ export function Footer() {
               <li><Link href="/project" className="hover:text-primary-foreground transition">Project</Link></li>
             </ul>
           </div>
-        </div>
         
           <div>
             <h3 className="font-semibold mb-4 text-primary-foreground">Legal</h3>
@@ -50,6 +49,7 @@ export function Footer() {
         </div>
       </div>
     </footer>
+    
     <footer className="bg-black text-white py-5 text-xs">
   <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-2">
 
