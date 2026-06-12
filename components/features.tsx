@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { ExternalLink, Github } from 'lucide-react'
+  import { ExternalLink, GithubIcon } from 'lucide-react'
 
 const projects = [
   {
@@ -77,7 +77,7 @@ export function Features() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:underline"
                 >
-                  <Github className="w-4 h-4" />
+                  <GithubIcon className="w-4 h-4" />
                   GitHub
                 </a>
               )}
