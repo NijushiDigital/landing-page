@@ -10,25 +10,31 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Nijushi Digital - Your World, Your Decision',
-  description: 'Nijushi Digital empowers your world with intelligent digital solutions. Take control of your digital future with our innovative services.',
-  generator: 'v0.app',
+  title: {
+    default: "Nijushi Digital",
+    template: "%s | Nijushi Digital",
+  },
+  description: 'Nijushi Digital provides a wide range of digital services and goods to help everyone. Find #YourDecision with Nijushi Digital!',
+  
   icons: {
     icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/android-icon-192x192.png", sizes: "192x192", type: "image/png" },
     ],
-    apple: '/apple-icon.png',
+
+    apple: [
+      { url: "/apple-icon-57x57.png", sizes: "57x57" },
+      { url: "/apple-icon-60x60.png", sizes: "60x60" },
+      { url: "/apple-icon-72x72.png", sizes: "72x72" },
+      { url: "/apple-icon-76x76.png", sizes: "76x76" },
+      { url: "/apple-icon-114x114.png", sizes: "114x114" },
+      { url: "/apple-icon-120x120.png", sizes: "120x120" },
+      { url: "/apple-icon-144x144.png", sizes: "144x144" },
+      { url: "/apple-icon-152x152.png", sizes: "152x152" },
+      { url: "/apple-icon-180x180.png", sizes: "180x180" },
+    ],
   },
 }
 
