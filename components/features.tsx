@@ -27,7 +27,7 @@ export function Features() {
     <section id="features" className="max-w-7xl mx-auto px-4 py-15">
       <div className="text-center mb-16 space-y-4">
         <h2 className="text-4xl md:text-5xl font-bold text-foreground">Our Projects</h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-md text-muted-foreground max-w-xl mx-auto">
           Nijushi Digital always provides and creates projects and services that can help many parties, and here are some of the ones we have worked on:
         </p>
       </div>
