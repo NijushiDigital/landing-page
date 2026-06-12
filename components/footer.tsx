@@ -11,8 +11,8 @@ export function Footer() {
             <div className="flex items-center gap-3">
               <Image
       src="/logo-nijushi.png"
-      width={80}
-      height={80}
+      width={150}
+      height={150}
       alt="Logo"
     />
             </div>
