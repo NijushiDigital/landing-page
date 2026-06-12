@@ -12,7 +12,7 @@ export function Header() {
             alt="Nijushi Digital Logo" 
             width={48} 
             height={48}
-            className="w-12 h-12"
+            className="w-8 h-8"
           />
           <span className="text-xl font-bold text-foreground">Nijushi Digital</span>
           </div>
