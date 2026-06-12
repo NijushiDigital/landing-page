@@ -14,7 +14,6 @@ export default function Page() {
         <div className="border-t border-border" />
         <Features />
                 <div className="border-t border-border" />
-      
         <SocialLinks />
         <CTA />
       </main>
