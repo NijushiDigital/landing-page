@@ -10,7 +10,7 @@ export function CTA() {
         </p>
         <button className="px-10 py-4 bg-accent text-accent-foreground font-semibold rounded-lg text-lg hover:opacity-90 transition inline-block">
           <a
-  href={"email:hello@nijushidigital.biz.id"}
+  href={"mailto:hello@nijushidigital.biz.id"}
   target="_blank"
   rel="noopener noreferrer">
           Start The Journey
