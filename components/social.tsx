@@ -1,6 +1,7 @@
 'use client'
 
-import { FaGithub, FaXTwitter, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa'
+import { FaXTwitter } from 'react-icons/fa'
 
 const socials = [
   { name: 'GitHub', icon: FaGithub, url: 'https://github.com/NijushiDigital' },
