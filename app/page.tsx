@@ -12,7 +12,6 @@ export default function Page() {
         <Hero />
         <div className="border-t border-border" />
         <Features />
-        <div className="border-t border-border" />
         <CTA />
       </main>
       <Footer />
