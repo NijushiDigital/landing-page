@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <>
     <footer className="border-t border-border bg-primary">
-      <div className="max-w-7xl mx-auto px-4 py-16">
+      <div className="max-w-7xl mx-auto px-4 py-13">
         <div className="grid md:grid-cols-3 gap-12 mb-8">
           <div className="space-y-4">
             <div className="flex items-center gap-3">
@@ -40,13 +40,6 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-primary-foreground/20 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-primary-foreground/70">
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-primary-foreground transition">Twitter</a>
-            <a href="#" className="hover:text-primary-foreground transition">LinkedIn</a>
-            <a href="#" className="hover:text-primary-foreground transition">GitHub</a>
-          </div>
-        </div>
       </div>
     </footer>
     
