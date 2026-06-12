@@ -11,24 +11,28 @@ const socials = [
 
 export function SocialLinks() {
   return (
-    <div className="flex items-center gap-4">
-      {socials.map((social) => (
-        <div key={social.name} className="relative group">
+    <div className="text-center space-y-6">
+      <div className="space-y-2">
+        <h3 className="text-2xl md:text-3xl font-bold text-foreground">Let's Connect</h3>
+        <p className="text-muted-foreground max-w-md mx-auto">
+          Follow us on social media for updates, news, and behind-the-scenes content.
+        </p>
+      </div>
+
+      <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+        {socials.map((social) => (
           <a
+            key={social.name}
             href={social.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground hover:text-accent transition"
+            className="group flex items-center gap-3 rounded-full border border-border px-6 py-3 text-foreground transition-all duration-300 hover:text-accent hover:border-accent hover:scale-105 hover:-translate-y-1 hover:shadow-lg"
           >
-            <social.icon className="w-5 h-5" />
+            <social.icon className="w-6 h-6 transition-transform duration-300 group-hover:rotate-6" />
+            <span className="text-base font-medium">{social.name}</span>
           </a>
-
-          {/* Tooltip */}
-          <span className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-foreground px-2 py-1 text-xs text-background opacity-0 group-hover:opacity-100 transition pointer-events-none">
-            {social.name}
-          </span>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   )
 }
