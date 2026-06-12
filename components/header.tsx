@@ -1,19 +1,22 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export function Header() {
   return (
     <header className="bg-background border-b border-border">
       <div className="max-w-7xl mx-auto px-4 py-5 flex items-center justify-between">
         <div className="flex items-center gap-3">
+          <Link href="/">
           <Image 
-            src="/logo-nijushi.png" 
+            src="/favicon.ico" 
             alt="Nijushi Digital Logo" 
             width={48} 
             height={48}
             className="w-12 h-12"
           />
           <span className="text-xl font-bold text-foreground">Nijushi Digital</span>
-        </div>
+          </Link>
+          </div>
         <nav className="hidden md:flex gap-8">
           <a href="#features" className="text-muted-foreground hover:text-foreground transition">Features</a>
           <a href="#about" className="text-muted-foreground hover:text-foreground transition">About</a>
