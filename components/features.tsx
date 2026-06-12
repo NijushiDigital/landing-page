@@ -28,7 +28,7 @@ export function Features() {
       <div className="text-center mb-16 space-y-4">
         <h2 className="text-4xl md:text-5xl font-bold text-foreground">Our Projects</h2>
         <p className="text-md text-muted-foreground max-w-xl mx-auto">
-          Nijushi Digital always provides and creates projects and services that can help many parties, and here are some of the ones we have worked on:
+          Nijushi Digital strives to always provide and create projects and services that can help many parties, and here are some of the ones we have worked on:
         </p>
       </div>
 
