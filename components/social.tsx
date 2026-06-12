@@ -11,7 +11,7 @@ const socials = [
 
 export function SocialLinks() {
   return (
-    <div className="text-center space-y-6">
+    <div className="text-center space-y-6 px-4 py-15">
       <div className="space-y-2">
         <h3 className="text-2xl md:text-3xl font-bold text-foreground">Let's Connect</h3>
         <p className="text-muted-foreground max-w-md mx-auto">
