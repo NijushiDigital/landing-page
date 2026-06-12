@@ -13,7 +13,7 @@ export function Hero() {
         <button className="px-8 py-3 bg-accent text-accent-foreground font-semibold rounded-lg hover:opacity-90 transition">
           Get Started
         </button>
-        <button className="px-8 py-3 border border-accent text-accent font-semibold rounded-lg hover:bg-accent hover:text-accent-foreground transition">
+        <button className="px-8 py-3 border-2 border-secondary text-secondary font-semibold rounded-lg hover:bg-secondary hover:text-secondary-foreground transition">
           Learn More
         </button>
       </div>

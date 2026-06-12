@@ -45,8 +45,8 @@ export function Features() {
       
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {features.map((feature) => (
-          <div key={feature.number} className="border border-border rounded-lg p-8 hover:bg-card transition group">
-            <div className="text-4xl font-bold text-accent mb-4 group-hover:text-accent-foreground transition">
+          <div key={feature.number} className="bg-white border border-border rounded-lg p-8 hover:shadow-md transition group">
+            <div className="text-4xl font-bold text-accent mb-4">
               {feature.number}
             </div>
             <h3 className="text-xl font-semibold text-foreground mb-3">{feature.title}</h3>

@@ -33,10 +33,10 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'dark',
+  colorScheme: 'light',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#001a3d' },
-    { media: '(prefers-color-scheme: dark)', color: '#001a3d' },
+    { media: '(prefers-color-scheme: light)', color: '#F7F3EA' },
+    { media: '(prefers-color-scheme: dark)', color: '#F7F3EA' },
   ],
 }
 
@@ -46,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} dark bg-background`}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} bg-background`}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

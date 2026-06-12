@@ -7,14 +7,10 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-12 mb-8">
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <Image 
-                src="/logo-nijushi.png" 
-                alt="Nijushi Digital Logo" 
-                width={40} 
-                height={40}
-                className="w-10 h-10"
-              />
-              <span className="font-semibold">Nijushi Digital</span>
+              <div className="w-10 h-10 bg-accent rounded flex items-center justify-center">
+                <span className="text-xs font-bold text-primary">N</span>
+              </div>
+              <span className="font-semibold text-primary-foreground">Nijushi Digital</span>
             </div>
             <p className="text-sm text-primary-foreground/70">
               Empowering your world through intelligent digital solutions.
@@ -22,7 +18,7 @@ export function Footer() {
           </div>
           
           <div>
-            <h3 className="font-semibold mb-4">Product</h3>
+            <h3 className="font-semibold mb-4 text-primary-foreground">Product</h3>
             <ul className="space-y-2 text-sm text-primary-foreground/70">
               <li><a href="#" className="hover:text-primary-foreground transition">Features</a></li>
               <li><a href="#" className="hover:text-primary-foreground transition">Pricing</a></li>
@@ -32,7 +28,7 @@ export function Footer() {
           </div>
           
           <div>
-            <h3 className="font-semibold mb-4">Company</h3>
+            <h3 className="font-semibold mb-4 text-primary-foreground">Company</h3>
             <ul className="space-y-2 text-sm text-primary-foreground/70">
               <li><a href="#" className="hover:text-primary-foreground transition">About</a></li>
               <li><a href="#" className="hover:text-primary-foreground transition">Blog</a></li>
@@ -42,7 +38,7 @@ export function Footer() {
           </div>
           
           <div>
-            <h3 className="font-semibold mb-4">Legal</h3>
+            <h3 className="font-semibold mb-4 text-primary-foreground">Legal</h3>
             <ul className="space-y-2 text-sm text-primary-foreground/70">
               <li><a href="#" className="hover:text-primary-foreground transition">Privacy</a></li>
               <li><a href="#" className="hover:text-primary-foreground transition">Terms</a></li>
