@@ -6,7 +6,7 @@ export function Header() {
     <header className="bg-background border-b border-border">
       <div className="max-w-7xl mx-auto px-4 py-5 flex items-center justify-between">
         <Link href="/">
-        <div className="flex items-center gap-3".
+        <div className="flex items-center gap-3">
           <Image 
             src="/logo.png" 
             alt="Nijushi Digital Logo" 
