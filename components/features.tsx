@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
   import { ExternalLink, bookOpen } from 'lucide-react'
+import { FaGithub } from 'react-icons/fa'
 
 const projects = [
   {
@@ -77,7 +78,7 @@ export function Features() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:underline"
                 >
-                  <bookOpen className="w-4 h-4" />
+                  <FaGithub className="w-4 h-4" />
                   GitHub
                 </a>
               )}
