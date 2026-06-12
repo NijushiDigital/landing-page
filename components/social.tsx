@@ -13,7 +13,7 @@ export function SocialLinks() {
   return (
     <div className="text-center space-y-6 px-4 py-15">
       <div className="space-y-2">
-        <h3 className="text-3xl md:text-4xl font-bold text-foreground">Let's Connect</h3>
+        <h3 className="text-4xl md:text-5xl font-bold text-foreground">Let's Connect</h3>
         <p className="text-muted-foreground max-w-md mx-auto">
           Follow us on social media for updates, news, and behind-the-scenes content.
         </p>
