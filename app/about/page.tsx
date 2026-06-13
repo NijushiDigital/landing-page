@@ -47,7 +47,7 @@ export default function AboutPage() {
           <h1 className="text-5xl md:text-6xl font-bold text-foreground text-balance leading-tight">
             Your World, Your Decision
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground text-balance">
+          <p className="text-md md:text-lg text-muted-foreground text-balance">
             Nijushi Digital is a digital studio that builds practical websites, tools, and
             services for people and businesses who want more control over their digital lives.
             From small ideas to everyday tools, everything we make is built to be simple,
@@ -59,7 +59,7 @@ export default function AboutPage() {
 
 {/* Vision */}
 <section className="max-w-4xl mx-auto px-4 py-15 text-center space-y-4">
-  <h2 className="text-5xl md:text-6xl font-bold text-foreground">Our Vision</h2>
+  <h2 className="text-4xl md:text-5xl font-bold text-foreground">Our Vision</h2>
   <p className="text-2xl md:text-3xl font-semibold text-foreground text-balance">
     To be a digital partner people can rely on, choose freely, and grow with.
   </p>
