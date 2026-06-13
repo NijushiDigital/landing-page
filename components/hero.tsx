@@ -14,7 +14,7 @@ export function Hero() {
           <Link
           href="/project"
           className="px-10 py-4 bg-accent text-accent-foreground font-semibold rounded-lg text-lg hover:opacity-90 transition inline-block">
-        >Learn More
+        Learn More
           
         </Link>
         
