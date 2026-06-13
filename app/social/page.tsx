@@ -1,7 +1,8 @@
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
-import { socials } from '@/lib/socials'
-import { AlertTriangle, ShieldAlert, ArrowUpRight } from 'lucide-react'
+import { SocialCard } from '@/components/social-card'
+import { socials, getPrimaryUrl } from '@/lib/socials'
+import { AlertTriangle, ShieldAlert } from 'lucide-react'
 import { FaWhatsapp } from 'react-icons/fa'
 import type { Metadata } from 'next'
 
@@ -15,9 +16,9 @@ const reportContact = socials.find((s) => s.name === 'Nishia Customer Support') 
 
 export default function SocialPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col">
+    <div className="min-h-screen bg-background text-foreground flex flex-col overflow-x-hidden">
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 w-full overflow-x-hidden">
         {/* Title */}
         <section className="max-w-3xl mx-auto px-4 py-15 text-center space-y-4">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground">Our Social Media</h1>
@@ -44,24 +45,7 @@ export default function SocialPage() {
         <section className="max-w-7xl mx-auto px-4 py-15">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {socials.map((social) => (
-              <a
-                key={`${social.name}-${social.url}`}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group bg-white border border-border rounded-lg p-6 flex items-center gap-4 hover:shadow-md hover:border-accent transition-all duration-300"
-              >
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
-                  <social.icon className="w-6 h-6 text-accent" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-semibold text-foreground truncate">
-                    {social.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground truncate">{social.url}</p>
-                </div>
-                <ArrowUpRight className="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent" />
-              </a>
+              <SocialCard key={social.name} social={social} />
             ))}
           </div>
         </section>
@@ -83,7 +67,7 @@ export default function SocialPage() {
               action as soon as possible.
             </p>
             <a
-              href={reportContact.url}
+              href={getPrimaryUrl(reportContact)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-3 bg-accent text-accent-foreground font-semibold rounded-lg hover:opacity-90 transition"
