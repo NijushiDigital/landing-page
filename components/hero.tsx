@@ -12,12 +12,12 @@ export function Hero() {
         </p>
         <div className="flex flex-col items-center gap-3 mt-4">
           <Link
-            href="/about"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-orange-500 hover:bg-orange-600 text-white text-sm font-medium transition-colors duration-200"
-          >
-            Learn More
-          </Link>
-          <span className="text-xs text-muted-foreground">Scroll To Continue Reading</span>
+          href="/project"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-foreground font-semibold hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
+        >Learn More
+          
+        </Link>
+        
         </div>
       </div>
     </section>
