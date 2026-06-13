@@ -18,10 +18,27 @@ const contactLinks = [
   { name: 'Instagram', icon: FaInstagram, url: 'https://instagram.com/nijushidigital' },
 ]
 
+const MOBILE_MENU_ANIM_MS = 300
+
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isClosing, setIsClosing] = useState(false)
   const [contactOpen, setContactOpen] = useState(false)
   const [mobileContactOpen, setMobileContactOpen] = useState(false)
+
+  const openMenu = () => {
+    setIsClosing(false)
+    setIsOpen(true)
+  }
+
+  const closeMenu = () => {
+    setIsClosing(true)
+    setTimeout(() => {
+      setIsOpen(false)
+      setIsClosing(false)
+      setMobileContactOpen(false)
+    }, MOBILE_MENU_ANIM_MS)
+  }
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -29,7 +46,6 @@ export function Header() {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = ''
-      setMobileContactOpen(false)
     }
     return () => {
       document.body.style.overflow = ''
@@ -106,7 +122,7 @@ export function Header() {
 
         {/* Mobile menu trigger */}
         <button
-          onClick={() => setIsOpen(true)}
+          onClick={openMenu}
           className="md:hidden p-2 -mr-2 text-foreground"
           aria-label="Open menu"
         >
@@ -119,12 +135,20 @@ export function Header() {
         <div className="md:hidden fixed inset-0 z-50">
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm animate-in fade-in duration-300"
-            onClick={() => setIsOpen(false)}
+            className={`absolute inset-0 bg-black/50 backdrop-blur-sm duration-300 ${
+              isClosing ? 'animate-out fade-out' : 'animate-in fade-in'
+            }`}
+            onClick={closeMenu}
           />
 
           {/* Sliding panel */}
-          <div className="absolute right-0 top-0 h-full w-[80%] max-w-sm bg-background border-l border-border shadow-2xl animate-in slide-in-from-right duration-300 ease-out flex flex-col">
+          <div
+            className={`absolute right-0 top-0 h-full w-[80%] max-w-sm bg-background border-l border-border shadow-2xl flex flex-col duration-300 fill-mode-forwards ${
+              isClosing
+                ? 'animate-out slide-out-to-right ease-in'
+                : 'animate-in slide-in-from-right ease-out'
+            }`}
+          >
             <div className="flex items-center justify-between px-6 py-5 border-b border-border">
               <div className="flex items-center gap-3">
                 <Image
@@ -137,7 +161,7 @@ export function Header() {
                 <span className="text-base font-bold text-foreground">Nijushi Digital</span>
               </div>
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={closeMenu}
                 className="p-2 -mr-2 text-foreground hover:rotate-90 transition-transform duration-300"
                 aria-label="Close menu"
               >
@@ -150,17 +174,33 @@ export function Header() {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium text-foreground py-4 border-b border-border animate-in fade-in slide-in-from-right-8 fill-mode-backwards hover:text-accent hover:pl-2 transition-all duration-300"
-                  style={{ animationDelay: `${100 + index * 80}ms`, animationDuration: '400ms' }}
+                  onClick={closeMenu}
+                  className={`text-lg font-medium text-foreground py-4 border-b border-border hover:text-accent hover:pl-2 transition-all duration-300 fill-mode-backwards ${
+                    isClosing
+                      ? 'animate-out fade-out slide-out-to-right-8'
+                      : 'animate-in fade-in slide-in-from-right-8'
+                  }`}
+                  style={{
+                    animationDelay: isClosing
+                      ? `${(navLinks.length - index - 1) * 60}ms`
+                      : `${100 + index * 80}ms`,
+                    animationDuration: '300ms',
+                  }}
                 >
                   {link.name}
                 </a>
               ))}
 
               <div
-                className="animate-in fade-in slide-in-from-right-8 fill-mode-backwards"
-                style={{ animationDelay: `${100 + navLinks.length * 80}ms`, animationDuration: '400ms' }}
+                className={`fill-mode-backwards ${
+                  isClosing
+                    ? 'animate-out fade-out slide-out-to-right-8'
+                    : 'animate-in fade-in slide-in-from-right-8'
+                }`}
+                style={{
+                  animationDelay: isClosing ? '0ms' : `${100 + navLinks.length * 80}ms`,
+                  animationDuration: '300ms',
+                }}
               >
                 <button
                   onClick={() => setMobileContactOpen((prev) => !prev)}
@@ -184,7 +224,7 @@ export function Header() {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => setIsOpen(false)}
+                        onClick={closeMenu}
                         className={`flex items-center gap-3 py-3 pl-2 text-muted-foreground hover:text-foreground hover:pl-4 transition-all duration-300 ${
                           mobileContactOpen ? 'animate-in fade-in slide-in-from-right-4' : ''
                         }`}
