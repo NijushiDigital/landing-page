@@ -57,15 +57,17 @@ export default function AboutPage() {
 
         <div className="border-t border-border" />
 
-        {/* Vision */}
-        <section className="max-w-4xl mx-auto px-4 py-15 text-center space-y-3">
-          <h2 className="text-4xl md:text-6xl font-bold text-foreground text-balance">
-            To be a digital partner people can rely on, choose freely, and grow with.
-          </h2>
-          <p className="text-sm md:text-base text-muted-foreground">
-            Our Vision
-          </p>
-        </section>
+{/* Vision */}
+<section className="max-w-4xl mx-auto px-4 py-15 text-center space-y-4">
+  <h2 className="text-5xl md:text-6xl font-bold text-foreground">Our Vision</h2>
+  <p className="text-2xl md:text-3xl font-semibold text-foreground text-balance">
+    To be a digital partner people can rely on, choose freely, and grow with.
+  </p>
+  <p className="text-sm md:text-base text-muted-foreground">
+    We believe technology should work for people — not the other way around. Everything
+    we build is guided by this principle, from the smallest tool to the largest platform.
+  </p>
+</section>
 
         <div className="border-t border-border" />
 
