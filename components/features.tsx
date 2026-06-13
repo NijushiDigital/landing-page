@@ -1,26 +1,10 @@
 'use client'
 
 import Image from 'next/image'
-  import { ExternalLink, bookOpen } from 'lucide-react'
+import Link from 'next/link'
+import { ExternalLink, ArrowRight } from 'lucide-react'
 import { FaGithub } from 'react-icons/fa'
-
-const projects = [
-  {
-    logo: 'https://rukogamer.com/favicon.ico',
-    title: 'RukoGamer',
-    description: 'Complete top-up website for the Indonesian region with low prices and fast processing',
-    link: 'https://rukogamer.com',
-    github: null
-  },
-  {
-    logo: 'https://malasngoding.dev/favicon.ico',
-    title: 'malasngoding.dev',
-    description: 'SaaS website to create unlimited custom subdomains and shortlinks!',
-    link: 'https://malasngoding.dev',
-    github: null // kalau gak ada github, set null
-  },
-  // ... tambah project lain
-]
+import { projects } from '@/lib/projects'
 
 export function Features() {
   return (
@@ -85,6 +69,17 @@ export function Features() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* See all projects */}
+      <div className="flex justify-center mt-12">
+        <Link
+          href="/project"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-foreground font-semibold hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
+        >
+          See All Project
+          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+        </Link>
       </div>
     </section>
   )
