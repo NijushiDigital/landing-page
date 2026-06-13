@@ -10,16 +10,15 @@ export function Hero() {
         <p className="text-xl md:text-2xl text-muted-foreground text-balance">
           Empower your digital future with intelligent solutions designed for those who value control and autonomy.
         </p>
-        <div className="flex items-center gap-4 mt-auto">
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
-              >
-                Learn More
-              </Link>
-          <br />
-          <br />
-          <a classname="text-[5px] underline">Scroll To Continue Reading</a>
+        <div className="flex flex-col items-center gap-3 mt-4">
+          <Link
+            href="/about"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-orange-500 hover:bg-orange-600 text-white text-sm font-medium transition-colors duration-200"
+          >
+            Learn More
+          </Link>
+          <span className="text-xs text-muted-foreground">Scroll To Continue Reading</span>
+        </div>
       </div>
     </section>
   )
