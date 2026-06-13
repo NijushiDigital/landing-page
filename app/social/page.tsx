@@ -69,7 +69,7 @@ export default function SocialPage() {
               className="inline-flex items-center gap-2 px-8 py-3 bg-accent text-accent-foreground font-semibold rounded-lg hover:opacity-90 transition"
             >
               <FaWhatsapp className="w-5 h-5" />
-              Report via Nishia Customer Support
+              Report It!
             </a>
           </div>
         </section>
