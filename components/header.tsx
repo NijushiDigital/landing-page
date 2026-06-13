@@ -3,8 +3,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Menu, X, ChevronDown } from 'lucide-react'
-import { socials } from '@/lib/socials'
+import { Menu, X } from 'lucide-react'
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -17,8 +16,6 @@ const MOBILE_MENU_ANIM_MS = 300
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
-  const [contactOpen, setContactOpen] = useState(false)
-  const [mobileContactOpen, setMobileContactOpen] = useState(false)
 
   const openMenu = () => {
     setIsClosing(false)
@@ -30,11 +27,9 @@ export function Header() {
     setTimeout(() => {
       setIsOpen(false)
       setIsClosing(false)
-      setMobileContactOpen(false)
     }, MOBILE_MENU_ANIM_MS)
   }
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
@@ -74,44 +69,12 @@ export function Header() {
             </Link>
           ))}
 
-          <div
-            className="relative"
-            onMouseEnter={() => setContactOpen(true)}
-            onMouseLeave={() => setContactOpen(false)}
+          <Link
+            href="/social"
+            className="px-4 py-2 rounded-md bg-orange-500 hover:bg-orange-600 text-white font-medium transition-colors duration-200"
           >
-            <button
-              className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition"
-              onClick={() => setContactOpen((prev) => !prev)}
-            >
-              Contact Us
-              <ChevronDown
-                className={`w-4 h-4 transition-transform duration-300 ${contactOpen ? 'rotate-180' : ''}`}
-              />
-            </button>
-
-            <div
-              className={`absolute right-0 top-full pt-2 transition-all duration-300 ${
-                contactOpen
-                  ? 'opacity-100 translate-y-0 visible'
-                  : 'opacity-0 -translate-y-2 invisible pointer-events-none'
-              }`}
-            >
-              <div className="bg-card border border-border rounded-lg shadow-lg p-2 min-w-[220px] flex flex-col gap-1">
-                {socials.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 px-3 py-2 rounded-md text-foreground hover:bg-accent hover:text-accent-foreground transition"
-                  >
-                    <social.icon className="w-4 h-4 shrink-0" />
-                    <span className="text-sm font-medium">{social.name}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
+            Contact Us
+          </Link>
         </nav>
 
         {/* Mobile menu trigger */}
@@ -127,7 +90,6 @@ export function Header() {
       {/* Mobile menu overlay */}
       {isOpen && (
         <div className="md:hidden fixed inset-0 z-50">
-          {/* Backdrop */}
           <div
             className={`absolute inset-0 bg-black/50 backdrop-blur-sm duration-300 ${
               isClosing ? 'animate-out fade-out' : 'animate-in fade-in'
@@ -135,7 +97,6 @@ export function Header() {
             onClick={closeMenu}
           />
 
-          {/* Sliding panel */}
           <div
             className={`absolute right-0 top-0 h-full w-[80%] max-w-sm bg-background border-l border-border shadow-2xl flex flex-col duration-300 fill-mode-forwards overflow-hidden ${
               isClosing
@@ -185,8 +146,10 @@ export function Header() {
                 </Link>
               ))}
 
-              <div
-                className={`fill-mode-backwards ${
+              <Link
+                href="/social"
+                onClick={closeMenu}
+                className={`mt-6 text-center text-lg font-semibold text-white bg-orange-500 hover:bg-orange-600 py-3 rounded-md transition-colors duration-200 fill-mode-backwards ${
                   isClosing
                     ? 'animate-out fade-out slide-out-to-right-8'
                     : 'animate-in fade-in slide-in-from-right-8'
@@ -196,41 +159,8 @@ export function Header() {
                   animationDuration: '300ms',
                 }}
               >
-                <button
-                  onClick={() => setMobileContactOpen((prev) => !prev)}
-                  className="flex items-center justify-between w-full text-lg font-medium text-foreground py-4 border-b border-border hover:text-accent transition-colors duration-300"
-                >
-                  Contact Us
-                  <ChevronDown
-                    className={`w-5 h-5 transition-transform duration-300 ${mobileContactOpen ? 'rotate-180' : ''}`}
-                  />
-                </button>
-
-                <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    mobileContactOpen ? 'max-h-[260px] opacity-100' : 'max-h-0 opacity-0'
-                  }`}
-                >
-                  <div className="flex flex-col gap-1 py-2">
-                    {socials.map((social, i) => (
-                      <a
-                        key={social.name}
-                        href={social.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={closeMenu}
-                        className={`flex items-center gap-3 py-3 pl-2 text-muted-foreground hover:text-foreground hover:pl-4 transition-all duration-300 ${
-                          mobileContactOpen ? 'animate-in fade-in slide-in-from-right-4' : ''
-                        }`}
-                        style={{ animationDelay: `${i * 60}ms`, animationDuration: '300ms' }}
-                      >
-                        <social.icon className="w-5 h-5 shrink-0" />
-                        <span className="text-base font-medium">{social.name}</span>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
+                Contact Us
+              </Link>
             </nav>
           </div>
         </div>
