@@ -1,7 +1,7 @@
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { SocialCard } from '@/components/social-card'
-import { socials, getPrimaryUrl } from '@/lib/socials'
+import { socials, getPrimaryUrl } from '@/lib/socials-full'
 import { AlertTriangle, ShieldAlert } from 'lucide-react'
 import { FaWhatsapp } from 'react-icons/fa'
 import type { Metadata } from 'next'
