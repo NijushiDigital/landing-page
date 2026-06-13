@@ -11,10 +11,10 @@ const socials = [
 
 export function SocialLinks() {
   return (
-    <div className="text-center space-y-6 px-4 py-15">
-      <div className="space-y-2">
+    <div className="text-center px-4 py-15">
+      <div className="text-center mb-16 space-y-4">
         <h3 className="text-4xl md:text-5xl font-bold text-foreground">Let's Connect</h3>
-        <p className="text-muted-foreground max-w-md mx-auto">
+        <p className="text-md text-muted-foreground max-w-xl mx-auto">
           Follow us on social media for updates, news, and behind-the-scenes content.
         </p>
       </div>
