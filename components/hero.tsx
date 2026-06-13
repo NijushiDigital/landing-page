@@ -13,7 +13,7 @@ export function Hero() {
         <div className="flex flex-col items-center gap-3 mt-4">
           <Link
           href="/project"
-          className="px-10 py-4 bg-accent text-accent-foreground font-semibold rounded-lg text-lg hover:opacity-90 transition inline-block">
+          className="px-5 py-4 bg-accent text-accent-foreground font-semibold rounded-lg text-md hover:opacity-90 transition inline-block">
         Learn More
           
         </Link>
