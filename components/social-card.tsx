@@ -7,7 +7,14 @@ import type { SocialEntry } from '@/lib/socials-full'
 export function SocialCard({ social }: { social: SocialEntry }) {
   const [open, setOpen] = useState(false)
   const hasMultiple = social.accounts.length > 1
-
+const displayUrl = (url: string) => {
+  try {
+    const u = new URL(url)
+    return `${u.hostname.replace(/^www\./, '')}${u.pathname}`
+  } catch {
+    return url
+  }
+}
   // Single account — render as a direct link card
   if (!hasMultiple) {
     const account = social.accounts[0]
@@ -79,7 +86,7 @@ export function SocialCard({ social }: { social: SocialEntry }) {
                 <p className="text-sm font-medium text-foreground group-hover:text-accent truncate">
                   {account.label}
                 </p>
-                <p className="text-xs text-muted-foreground truncate">{account.url}</p>
+                <p className="text-xs text-muted-foreground truncate">{displayUrl(account.url)}</p>
               </div>
               <ArrowUpRight className="w-4 h-4 text-muted-foreground shrink-0 group-hover:text-accent transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </a>
