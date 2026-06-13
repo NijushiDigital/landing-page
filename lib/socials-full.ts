@@ -42,7 +42,10 @@ export const socials: SocialEntry[] = [
   {
     name: 'Instagram',
     icon: FaInstagram,
-    accounts: [{ label: 'Instagram', url: 'https://instagram.com/nijushidigital' }],
+    accounts: [
+      { label: 'Nijushi Digital', url: 'https://instagram.com/nijushidigital' },
+    { label: 'RukoGamer', url: 'https://instagram.com/officialrukogamer' }
+    ],
   },
   {
     name: 'LinkedIn',
