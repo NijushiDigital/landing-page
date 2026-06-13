@@ -87,8 +87,8 @@ export default function AboutPage() {
                 className="bg-white border border-border rounded-lg p-8 hover:shadow-md transition flex flex-col gap-4"
               >
                 <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                  <span className="w-6 h-6 text-accent">{mission.icon}</span>
-                </div>
+  <span className="text-lg font-bold text-accent">{mission.icon}</span>
+</div>
                 <h3 className="text-xl font-semibold text-foreground">{mission.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">{mission.description}</p>
               </div>
