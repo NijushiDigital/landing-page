@@ -24,6 +24,7 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4 text-primary-foreground">Company</h3>
             <ul className="space-y-2 text-sm text-primary-foreground/70">
+              <li><Link href="/" className="hover:text-primary-foreground transition">Home</Link></li>
               <li><Link href="/about" className="hover:text-primary-foreground transition">About Company</Link></li>
               <li><Link href="/project" className="hover:text-primary-foreground transition">Project</Link></li>
             </ul>
@@ -32,10 +33,9 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4 text-primary-foreground">Legal</h3>
             <ul className="space-y-2 text-sm text-primary-foreground/70">
-              <li><a href="#" className="hover:text-primary-foreground transition">Privacy</a></li>
-              <li><a href="#" className="hover:text-primary-foreground transition">Terms</a></li>
-              <li><a href="#" className="hover:text-primary-foreground transition">Cookie Policy</a></li>
-              <li><a href="#" className="hover:text-primary-foreground transition">Compliance</a></li>
+              <li><a href="/privacy" className="hover:text-primary-foreground transition">Privacy Policy</a></li>
+              <li><a href="/terms" className="hover:text-primary-foreground transition">Terms of Service</a></li>
+              <li><a href="/cookie-policy" className="hover:text-primary-foreground transition">Cookie Policy</a></li>
             </ul>
           </div>
         </div>
