@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Menu, X, ChevronDown } from 'lucide-react'
-import { FaGithub, FaInstagram } from 'react-icons/fa'
+
+import { FaGithub, FaLinkedin, FaInstagram, FaYoutube, FaLinkedin } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 
 const navLinks = [
@@ -13,9 +14,11 @@ const navLinks = [
 ]
 
 const contactLinks = [
+  { name: 'Nishia Customer Support', icon: FaWhatsapp, url: 'https://wa.me/6285163614050' },
   { name: 'GitHub', icon: FaGithub, url: 'https://github.com/NijushiDigital' },
   { name: 'X', icon: FaXTwitter, url: 'https://x.com/nijushidigital' },
   { name: 'Instagram', icon: FaInstagram, url: 'https://instagram.com/nijushidigital' },
+  { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/company/nijushidigital/' },
 ]
 
 const MOBILE_MENU_ANIM_MS = 300
