@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { ArrowUpRight, ChevronDown } from 'lucide-react'
-import type { SocialEntry } from '@/lib/socials'
+import type { SocialEntry } from '@/lib/socials-full'
 
 export function SocialCard({ social }: { social: SocialEntry }) {
   const [open, setOpen] = useState(false)
