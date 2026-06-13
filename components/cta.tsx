@@ -1,7 +1,7 @@
 export function CTA() {
   return (
-    <section id="contact" className="max-w-7xl mx-auto px-4 py-10 text-center">
-      <div className="bg-white border border-border rounded-lg p-12 md:p-10 space-y-8">
+    <section id="contact" className="max-w-3xl mx-auto px-4 py-10 text-center">
+      <div className="bg-white border border-border rounded-lg p-8 md:p-12 space-y-8">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground">
           Interested in Working Together?
         </h2>
