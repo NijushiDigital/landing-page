@@ -7,14 +7,9 @@ import type { SocialEntry } from '@/lib/socials-full'
 export function SocialCard({ social }: { social: SocialEntry }) {
   const [open, setOpen] = useState(false)
   const hasMultiple = social.accounts.length > 1
-const displayUrl = (url: string) => {
-  try {
-    const u = new URL(url)
-    return `${u.hostname.replace(/^www\./, '')}${u.pathname}`
-  } catch {
-    return url
-  }
-}
+const displayUrl = (url: string) =>
+  url.replace(/^https?:\/\/(www\.)?/, '')
+  
   // Single account — render as a direct link card
   if (!hasMultiple) {
     const account = social.accounts[0]
