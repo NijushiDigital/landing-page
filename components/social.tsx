@@ -1,6 +1,6 @@
 'use client'
 
-import { FaGithub, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaInstagram, FaYoutube, FaWhatsapp } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 
 const socials = [
