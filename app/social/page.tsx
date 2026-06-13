@@ -1,15 +1,11 @@
+'use client'
+
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { SocialCard } from '@/components/social-card'
 import { socials, getPrimaryUrl } from '@/lib/socials-full'
 import { AlertTriangle, ShieldAlert } from 'lucide-react'
 import { FaWhatsapp } from 'react-icons/fa'
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Social Media',
-  description: 'Official social media accounts of Nijushi Digital.',
-}
 
 // Report channel is always the customer support / WhatsApp entry
 const reportContact = socials.find((s) => s.name === 'Nishia Customer Support') ?? socials[0]
