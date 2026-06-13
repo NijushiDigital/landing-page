@@ -10,7 +10,7 @@ export function Hero() {
         <p className="text-xl md:text-2xl text-muted-foreground text-balance">
           Empower your digital future with intelligent solutions designed for those who value control and autonomy.
         </p>
-        <div className="flex flex-col items-center gap-3 mt-4">
+        <div className="flex flex-col items-center gap-3 mt-6">
           <Link
           href="/about"
           className="px-5 py-3 bg-accent text-accent-foreground font-semibold rounded-lg text-md hover:opacity-90 transition inline-block">
