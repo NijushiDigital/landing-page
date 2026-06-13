@@ -12,25 +12,25 @@ export const metadata: Metadata = {
 
 const missions = [
   {
-    icon: Rocket,
+    icon: "01",
     title: 'Build Reliable Products',
     description:
       'Deliver digital products and services that are fast, affordable, and genuinely useful for everyday needs.',
   },
   {
-    icon: ShieldCheck,
+    icon: "02",
     title: 'Respect Your Autonomy',
     description:
       'Design solutions that put control back in your hands — transparent, secure, and free from unnecessary lock-in.',
   },
   {
-    icon: Users,
+    icon: "03",
     title: 'Grow With The Community',
     description:
       'Listen to feedback, support open collaboration, and build long-term relationships with the people we serve.',
   },
   {
-    icon: Lightbulb,
+    icon: "04",
     title: 'Keep Innovating',
     description:
       'Continuously explore new ideas and technologies so our solutions stay relevant for years to come.',
@@ -87,7 +87,7 @@ export default function AboutPage() {
                 className="bg-white border border-border rounded-lg p-8 hover:shadow-md transition flex flex-col gap-4"
               >
                 <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                  <mission.icon className="w-6 h-6 text-accent" />
+                  <span className="w-6 h-6 text-accent">{mission.icon}</span>
                 </div>
                 <h3 className="text-xl font-semibold text-foreground">{mission.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">{mission.description}</p>
