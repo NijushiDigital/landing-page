@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
   images: [
     {
-      url: 'https://nijushidigital.biz.id/opengraph-image.jpg', // Must be an absolute URL
+      url: 'https://nijushidigital.biz.id/opengraph-image.png', // Must be an absolute URL
     },
   ],
   },
