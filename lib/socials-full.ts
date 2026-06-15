@@ -50,7 +50,10 @@ export const socials: SocialEntry[] = [
   {
     name: 'LinkedIn',
     icon: FaLinkedin,
-    accounts: [{ label: 'LinkedIn', url: 'https://www.linkedin.com/company/nijushidigital/' }],
+    accounts: [
+      { label: 'Nijushi Digital', url: 'https://www.linkedin.com/company/nijushidigital/' },
+      { label: 'RukoGamer', url: 'https://www.linkedin.com/company/nijushidigital/' }
+              ],
   },
 ]
 
