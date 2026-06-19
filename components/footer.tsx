@@ -27,6 +27,8 @@ export function Footer() {
               <li><Link href="/" className="hover:text-primary-foreground transition">Home</Link></li>
               <li><Link href="/about" className="hover:text-primary-foreground transition">About Company</Link></li>
               <li><Link href="/project" className="hover:text-primary-foreground transition">Project</Link></li>
+              <li><a href="https://status.nijushidigital.biz.id" className="hover:text-primary-foreground transition">Status Monitoring</a></li>
+           
             </ul>
           </div>
         
@@ -37,14 +39,6 @@ export function Footer() {
               <li><a href="/terms" className="hover:text-primary-foreground transition">Terms of Service</a></li>
               <li><a href="/cookie-policy" className="hover:text-primary-foreground transition">Cookie Policy</a></li>
             </ul>
-          </div>
-          
-          <ul className="space-y-2 text-sm text-primary-foreground/70">
-              <li><a href="https://status.nijushidigital.biz.id" className="hover:text-primary-foreground transition">Status Monitoring</a></li>
-            </ul>
-          </div>
-        </div>
-        
       </div>
     </footer>
     
