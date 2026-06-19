@@ -38,6 +38,11 @@ export function Footer() {
               <li><a href="/cookie-policy" className="hover:text-primary-foreground transition">Cookie Policy</a></li>
             </ul>
           </div>
+          
+          <ul className="space-y-2 text-sm text-primary-foreground/70">
+              <li><a href="https://status.nijushidigital.biz.id" className="hover:text-primary-foreground transition">Status Monitoring</a></li>
+            </ul>
+          </div>
         </div>
         
       </div>
