@@ -79,11 +79,11 @@ export default function CookiesPage() {
           </li>
           <li>
             <strong>Cookie banner</strong> — On your first visit, you can choose which non-essential
-            cookies to accept via our consent banner.
+            cookies to accept via our consent banner where available.
           </li>
         </ul>
         <p className="mt-3">
-          Note that disabling certain cookies may limit the functionality of our Services.
+          Note that disabling certain cookies may limit the functionality of our or third-party Services.
         </p>
       </Section>
 
