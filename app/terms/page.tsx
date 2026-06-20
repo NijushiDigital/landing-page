@@ -123,8 +123,8 @@ export default function TermsPage() {
       <Section title="11. Contact">
         <p>
           For questions about these terms, contact us at{' '}
-          <a href="mailto:legal@nijushi.digital" className="text-orange-500 hover:underline">
-            legal@nijushi.digital
+          <a href="mailto:legal@nijushidigital.biz.id" className="text-orange-500 hover:underline">
+            legal@nijushidigital.biz.id
           </a>{' '}
           or through our{' '}
           <a href="/social" className="text-orange-500 hover:underline">
