@@ -92,7 +92,7 @@ export default function PrivacyPage() {
         <p className="mt-3">
           To exercise any of these rights, contact us at{' '}
           <a href="mailto:privacy@nijushi.digital" className="text-orange-500 hover:underline">
-            privacy@nijushi.digital
+            privacy@nijushidigital.biz.id
           </a>
           .
         </p>
