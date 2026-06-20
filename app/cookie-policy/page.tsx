@@ -59,7 +59,7 @@ export default function CookiesPage() {
 
       <Section title="4. Cookies Across Our Products">
         <p>
-          This policy applies to nijushi.digital and all sub-products, platforms, and derivative
+          This policy applies to Nijushi Digital (nijushidigital.biz.id) and all sub-products, platforms, and derivative
           digital services operated by Nijushi Digital, whether under the same domain or separate
           branded domains. Each product may use different combinations of the cookie categories
           above, always in accordance with this policy.
