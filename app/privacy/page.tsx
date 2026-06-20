@@ -125,8 +125,8 @@ export default function PrivacyPage() {
       <Section title="10. Contact">
         <p>
           Questions about this policy? Reach us at{' '}
-          <a href="mailto:privacy@nijushi.digital" className="text-orange-500 hover:underline">
-            privacy@nijushi.digital
+          <a href="mailto:privacy@nijushidigital.biz.id" className="text-orange-500 hover:underline">
+            privacy@nijushidigital.biz.id
           </a>{' '}
           or through our{' '}
           <a href="/social" className="text-orange-500 hover:underline">
