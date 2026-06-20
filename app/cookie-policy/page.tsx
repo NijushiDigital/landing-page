@@ -106,8 +106,8 @@ export default function CookiesPage() {
       <Section title="8. Contact">
         <p>
           Questions about how we use cookies? Contact us at{' '}
-          <a href="mailto:privacy@nijushi.digital" className="text-orange-500 hover:underline">
-            privacy@nijushi.digital
+          <a href="mailto:privacy@nijushidigital.biz.id" className="text-orange-500 hover:underline">
+            privacy@nijushidigital.biz.id
           </a>{' '}
           or through our{' '}
           <a href="/social" className="text-orange-500 hover:underline">
