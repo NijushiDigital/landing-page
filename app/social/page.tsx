@@ -50,7 +50,7 @@ export default function SocialPage() {
 
         {/* Report fake account */}
         <section className="max-w-3xl mx-auto px-4 py-15">
-          <div className="bg-white border border-border rounded-lg p-8 md:p-10 text-center space-y-4">
+          <div className="bg-card/95 border border-border/80 rounded-xl shadow-sm p-8 md:p-10 text-center space-y-4">
             <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto">
               <ShieldAlert className="w-6 h-6 text-accent" />
             </div>

@@ -2,13 +2,15 @@
 
 import { useState } from 'react'
 import { ArrowUpRight, ChevronDown } from 'lucide-react'
-import type { SocialEntry } from '@/lib/socials-full'
+import { getSocialIcon, type SocialEntry } from '@/lib/socials-full'
 
 export function SocialCard({ social }: { social: SocialEntry }) {
   const [open, setOpen] = useState(false)
   const hasMultiple = social.accounts.length > 1
-const displayUrl = (url: string) => {
-  const cleaned = url.replace(/^https?:\/\/(www\.)?/, '')
+  const Icon = getSocialIcon(social.icon)
+
+  const displayUrl = (url: string) => {
+    const cleaned = url.replace(/^https?:\/\/(www\.)?/, '')
 
   if (cleaned.startsWith('wa.me/')) {
     return '+' + cleaned.replace('wa.me/', '')
@@ -25,10 +27,10 @@ const displayUrl = (url: string) => {
         href={account.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="group bg-white border border-border rounded-lg p-6 flex items-center gap-4 hover:shadow-md hover:border-accent transition-all duration-300 min-w-0"
+        className="group bg-card/95 border border-border/80 rounded-xl shadow-sm p-6 flex items-center gap-4 hover:shadow-md hover:border-accent transition-all duration-300 min-w-0"
       >
         <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
-          <social.icon className="w-6 h-6 text-accent" />
+          <Icon className="w-6 h-6 text-accent" />
         </div>
         <div className="flex-1 min-w-0">
           <h3 className="text-lg font-semibold text-foreground truncate">{social.name}</h3>
@@ -42,17 +44,17 @@ const displayUrl = (url: string) => {
   // Multiple accounts — render as an expandable dropdown card
   return (
     <div
-      className={`bg-white border rounded-lg transition-all duration-300 min-w-0 ${
-        open ? 'border-accent shadow-md' : 'border-border'
+      className={`bg-card/95 border rounded-xl cursor-pointer shadow-sm transition-all duration-300 min-w-0 ${
+        open ? 'border-accent shadow-md' : 'border-border/80'
       }`}
     >
       <button
         onClick={() => setOpen((prev) => !prev)}
-        className="w-full p-6 flex items-center gap-4 text-left min-w-0"
+        className="w-full p-6 flex items-center gap-4 text-left min-w-0 cursor-pointer"
         aria-expanded={open}
       >
         <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
-          <social.icon className="w-6 h-6 text-accent" />
+          <Icon className="w-6 h-6 text-accent" />
         </div>
         <div className="flex-1 min-w-0">
           <h3 className="text-lg font-semibold text-foreground truncate">{social.name}</h3>

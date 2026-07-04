@@ -1,21 +1,43 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Menu, X } from 'lucide-react'
-
-const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'Project', href: '/project' },
-  { name: 'About Company', href: '/about' },
-]
+import { Menu, Moon, Sun, X } from 'lucide-react'
+import {
+  getLocaleFromPathname,
+  getLocalizedPath,
+  getLocaleLabel,
+  type Locale,
+} from '@/lib/i18n'
 
 const MOBILE_MENU_ANIM_MS = 300
 
-export function Header() {
+type HeaderProps = {
+  locale?: Locale
+}
+
+export function Header({ locale }: HeaderProps) {
+  const pathname = usePathname()
+  const router = useRouter()
+  const resolvedLocale = locale ?? getLocaleFromPathname(pathname)
   const [isOpen, setIsOpen] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
+  const [theme, setTheme] = useState<'light' | 'dark'>('light')
+
+  const navLinks =
+    resolvedLocale === 'id'
+      ? [
+          { name: 'Beranda', href: '/' },
+          { name: 'Proyek', href: '/project' },
+          { name: 'Tentang Perusahaan', href: '/about' },
+        ]
+      : [
+          { name: 'Home', href: '/' },
+          { name: 'Project', href: '/project' },
+          { name: 'About Company', href: '/about' },
+        ]
 
   const openMenu = () => {
     setIsClosing(false)
@@ -30,7 +52,44 @@ export function Header() {
     }, MOBILE_MENU_ANIM_MS)
   }
 
+  const switchLanguage = () => {
+    const nextLocale = resolvedLocale === 'id' ? 'en' : 'id'
+
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('preferred-locale', nextLocale)
+      document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=${60 * 60 * 24 * 365}; SameSite=Lax`
+    }
+
+    router.push(getLocalizedPath(pathname, nextLocale))
+    closeMenu()
+  }
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark'
+    setTheme(nextTheme)
+
+    if (typeof window !== 'undefined') {
+      document.documentElement.classList.toggle('dark', nextTheme === 'dark')
+      document.documentElement.setAttribute('data-theme', nextTheme)
+      document.documentElement.style.colorScheme = nextTheme
+      localStorage.setItem('theme', nextTheme)
+    }
+  }
+
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
+      const initialTheme = savedTheme === 'dark' || savedTheme === 'light'
+        ? savedTheme
+        : window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light'
+      setTheme(initialTheme)
+      document.documentElement.classList.toggle('dark', initialTheme === 'dark')
+      document.documentElement.setAttribute('data-theme', initialTheme)
+      document.documentElement.style.colorScheme = initialTheme
+    }
+
     if (isOpen) {
       document.body.style.overflow = 'hidden'
     } else {
@@ -44,7 +103,7 @@ export function Header() {
   return (
     <header className="bg-background border-b border-border sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-5 flex items-center justify-between">
-        <Link href="/">
+        <Link href={getLocalizedPath('/', resolvedLocale)}>
           <div className="flex items-center gap-3">
             <Image
               src="/logo.png"
@@ -57,12 +116,11 @@ export function Header() {
           </div>
         </Link>
 
-        {/* Desktop navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
               key={link.name}
-              href={link.href}
+              href={getLocalizedPath(link.href, resolvedLocale)}
               className="text-muted-foreground hover:text-foreground transition"
             >
               {link.name}
@@ -70,24 +128,49 @@ export function Header() {
           ))}
 
           <Link
-            href="/social"
+            href={getLocalizedPath('/social', resolvedLocale)}
             className="px-4 py-2 rounded-md bg-orange-500 hover:bg-orange-600 text-white font-medium transition-colors duration-200"
           >
-            Contact Us
+            {resolvedLocale === 'id' ? 'Hubungi Kami' : 'Contact Us'}
           </Link>
+          <button
+            type="button"
+            onClick={switchLanguage}
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition"
+          >
+            {resolvedLocale === 'id' ? 'EN' : 'ID'}
+          </button>
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="rounded-full border border-border p-2 text-foreground hover:bg-accent/10 transition"
+            aria-label="Toggle dark mode"
+          >
+            {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </button>
         </nav>
 
-        {/* Mobile menu trigger */}
-        <button
-          onClick={openMenu}
-          className="md:hidden p-2 -mr-2 text-foreground"
-          aria-label="Open menu"
-        >
-          <Menu className="w-7 h-7" />
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="rounded-full border border-border p-2 text-foreground hover:bg-accent/10 transition"
+            aria-label="Toggle dark mode"
+          >
+            {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </button>
+          <button
+            onClick={openMenu}
+            className="p-2 -mr-2 text-foreground"
+            aria-label="Open menu"
+          >
+            <Menu className="w-7 h-7" />
+          </button>
+        </div>
+
+          
       </div>
 
-      {/* Mobile menu overlay */}
       {isOpen && (
         <div className="md:hidden fixed inset-0 z-50">
           <div
@@ -128,7 +211,7 @@ export function Header() {
               {navLinks.map((link, index) => (
                 <Link
                   key={link.name}
-                  href={link.href}
+                  href={getLocalizedPath(link.href, resolvedLocale)}
                   onClick={closeMenu}
                   className={`text-lg font-medium text-foreground py-4 border-b border-border hover:text-accent hover:pl-2 transition-all duration-300 fill-mode-backwards ${
                     isClosing
@@ -146,8 +229,41 @@ export function Header() {
                 </Link>
               ))}
 
+              <button
+                type="button"
+                onClick={switchLanguage}
+                className={`mt-4 text-left text-lg font-medium text-foreground py-4 border-b border-border hover:text-accent hover:pl-2 transition-all duration-300 fill-mode-backwards ${
+                  isClosing
+                    ? 'animate-out fade-out slide-out-to-right-8'
+                    : 'animate-in fade-in slide-in-from-right-8'
+                }`}
+                style={{
+                  animationDelay: isClosing ? '0ms' : `${100 + navLinks.length * 80}ms`,
+                  animationDuration: '300ms',
+                }}
+              >
+                {getLocaleLabel(resolvedLocale)}
+              </button>
+
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className={`mt-4 flex items-center gap-3 text-left text-lg font-medium text-foreground py-4 border-b border-border hover:text-accent hover:pl-2 transition-all duration-300 fill-mode-backwards ${
+                  isClosing
+                    ? 'animate-out fade-out slide-out-to-right-8'
+                    : 'animate-in fade-in slide-in-from-right-8'
+                }`}
+                style={{
+                  animationDelay: isClosing ? '0ms' : `${100 + navLinks.length * 80}ms`,
+                  animationDuration: '300ms',
+                }}
+              >
+                {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                {theme === 'dark' ? 'Light mode' : 'Dark mode'}
+              </button>
+
               <Link
-                href="/social"
+                href={getLocalizedPath('/social', resolvedLocale)}
                 onClick={closeMenu}
                 className={`mt-6 text-center text-lg font-semibold text-white bg-orange-500 hover:bg-orange-600 py-3 rounded-md transition-colors duration-200 fill-mode-backwards ${
                   isClosing
@@ -159,7 +275,7 @@ export function Header() {
                   animationDuration: '300ms',
                 }}
               >
-                Contact Us
+                {resolvedLocale === 'id' ? 'Hubungi Kami' : 'Contact Us'}
               </Link>
             </nav>
           </div>

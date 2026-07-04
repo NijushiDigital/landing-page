@@ -1,15 +1,20 @@
 'use client'
 
 import { socials } from '@/lib/socials'
+import { getDictionary, type Locale } from '@/lib/i18n'
 
-export function SocialLinks() {
+type SocialLinksProps = {
+  locale?: Locale
+}
+
+export function SocialLinks({ locale = 'en' }: SocialLinksProps) {
+  const dict = getDictionary(locale).home
+
   return (
     <div className="text-center px-4 py-15">
       <div className="text-center mb-16 space-y-4">
-        <h3 className="text-4xl md:text-5xl font-bold text-foreground">Let's Connect</h3>
-        <p className="text-md text-muted-foreground max-w-xl mx-auto">
-          Follow us on social media for updates, news, and behind-the-scenes content.
-        </p>
+        <h3 className="text-4xl md:text-5xl font-bold text-foreground">{dict.socialTitle}</h3>
+        <p className="text-md text-muted-foreground max-w-xl mx-auto">{dict.socialDescription}</p>
       </div>
 
       <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">

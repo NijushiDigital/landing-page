@@ -7,10 +7,10 @@ export const projects = [
     github: null,
   },
   {
-    logo: 'https://malasngoding.dev/favicon.ico',
-    title: 'malasngoding.dev',
-    description: 'SaaS website to create unlimited custom subdomains and shortlinks!',
-    link: 'https://malasngoding.dev',
+    logo: 'https://sometipfor.me/favicon.ico',
+    title: 'sometipfor.me',
+    description: 'Leave that donation platform, because Sometipfor.me allows you to get tips from your fans with cheap fees and no limits',
+    link: 'https://sometipfor.me',
     github: null, // kalau gak ada github, set null
   },
   // ... tambah project lain

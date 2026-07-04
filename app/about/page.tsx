@@ -84,7 +84,7 @@ export default function AboutPage() {
             {missions.map((mission) => (
               <div
                 key={mission.title}
-                className="bg-white border border-border rounded-lg p-8 hover:shadow-md transition flex flex-col gap-4"
+                className="bg-card/95 border border-border/80 rounded-xl shadow-sm p-8 hover:shadow-md transition flex flex-col gap-4"
               >
                 <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
   <span className="text-lg font-bold text-accent">{mission.icon}</span>
