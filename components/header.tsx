@@ -133,33 +133,33 @@ export function Header({ locale }: HeaderProps) {
   }, [isOpen])
 
   return (
-    <>
-      <header
-        className={`sticky z-50 w-full ${
+  <>
+    <header
+      className={`sticky z-50 ${
+        skipTransition ? '' : 'transition-all duration-300 ease-in-out'
+      } ${
+        scrolled
+          ? 'top-3 w-[calc(100%-1.5rem)] xs:max-w-60 sm:max-w-xl md:max-w-2xl lg:max-w-5xl left-0 right-0 mx-auto rounded-full border border-border bg-background/80 backdrop-blur-md shadow-lg'
+          : 'top-0 w-full max-w-full mx-auto rounded-none border-b border-transparent bg-transparent shadow-none'
+      }`}
+    >
+      <div
+        className={`mx-auto grid grid-cols-[1fr_auto_1fr] items-center ${
           skipTransition ? '' : 'transition-all duration-300 ease-in-out'
         } ${
-          scrolled
-            ? 'top-3 max-w-md md:max-w-2xl lg:max-w-5xl mx-auto rounded-full border border-border bg-background/80 backdrop-blur-md shadow-lg'
-            : 'top-0 max-w-full mx-auto rounded-none border-b border-transparent bg-transparent shadow-none'
+          scrolled ? 'max-w-5xl px-4 sm:px-6 py-3' : 'max-w-full md:max-w-7xl px-4 sm:px-5 md:px-7 py-5'
         }`}
       >
-        <div
-          className={`mx-auto grid grid-cols-[1fr_auto_1fr] items-center ${
-            skipTransition ? '' : 'transition-all duration-300 ease-in-out'
-          } ${
-            scrolled ? 'max-w-5xl px-6 py-3' : 'max-w-7xl px-7 py-5'
-          }`}
-        >
-          <Link href={getLocalizedPath('/', resolvedLocale)} className="justify-self-start">
-            <div className="flex items-center gap-3">
+          <Link href={getLocalizedPath('/', resolvedLocale)} className="justify-self-start min-w-0">
+            <div className="flex items-center gap-2 sm:gap-3 min-w-0">
               <Image
                 src="/logo.png"
                 alt="Nijushi Digital Logo"
                 width={48}
                 height={48}
-                className="w-8 h-8"
+                className="w-7 h-7 sm:w-8 sm:h-8 shrink-0"
               />
-              <span className="text-xl font-bold text-foreground">Nijushi Digital</span>
+              <span className="text-xs sm:text-sm md:text-xl font-bold text-foreground whitespace-nowrap truncate">Nijushi Digital</span>
             </div>
           </Link>
 
@@ -225,34 +225,34 @@ export function Header({ locale }: HeaderProps) {
             
           </div>
 
-          <div className="flex items-center gap-2 lg:hidden justify-self-end col-start-3">
+          <div className="flex items-center gap-2 lg:hidden justify-self-end col-start-3 min-w-0 shrink-0">
             <button
-                                      type="button"
-                                      onClick={switchLanguage}
-                                      className="text-lg font-medium text-muted-foreground hover:text-foreground border border-border rounded-2xl transition"
-                                    >
-                                      <div className="px-3">
-                                      {resolvedLocale === 'id' ? (
-                                        <>
-                                        <div className="flex items-center gap-2">
-                                        <ReactCountryFlag countryCode="US" className="" svg />
-                                        <span>EN</span>
-                                        </div>
-                                        </>
-                                      ) : (
-                                        <>
-                                        <div className="flex items-center gap-2">
-                                        <ReactCountryFlag countryCode="ID" className="" svg />
-                                        <span>ID</span>
-                                        </div>
-                                        </>
-                                      )}
-                                      </div>
-                                    </button>
+              type="button"
+              onClick={switchLanguage}
+              className="text-xs sm:text-sm md:text-lg font-medium text-muted-foreground hover:text-foreground border border-border rounded-2xl transition shrink-0"
+            >
+              <div className="px-2 sm:px-3">
+              {resolvedLocale === 'id' ? (
+                <>
+                <div className="flex items-center gap-1 sm:gap-2">
+                <ReactCountryFlag countryCode="US" className="" svg />
+                <span>EN</span>
+                </div>
+                </>
+              ) : (
+                <>
+                <div className="flex items-center gap-1 sm:gap-2">
+                <ReactCountryFlag countryCode="ID" className="" svg />
+                <span>ID</span>
+                </div>
+                </>
+              )}
+              </div>
+            </button>
 
             <button
               onClick={openMenu}
-              className="p-2 -mr-2 text-foreground cursor-pointer hover:text-accent transition-colors duration-300"
+              className="p-2 -mr-2 text-foreground cursor-pointer hover:text-accent transition-colors duration-300 shrink-0"
               aria-label="Open menu"
             >
               <Menu className="w-7 h-7" />
