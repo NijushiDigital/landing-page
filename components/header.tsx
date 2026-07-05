@@ -135,7 +135,7 @@ export function Header({ locale }: HeaderProps) {
   return (
   <>
     <header
-      className={`sticky z-50 ${
+      className={`sticky z-50 px-3 ${
         skipTransition ? '' : 'transition-all duration-300 ease-in-out'
       } ${
         scrolled
@@ -159,7 +159,7 @@ export function Header({ locale }: HeaderProps) {
                 height={48}
                 className="w-7 h-7 sm:w-8 sm:h-8 shrink-0"
               />
-              <span className="text-xs sm:text-sm md:text-xl font-bold text-foreground whitespace-nowrap truncate">Nijushi Digital</span>
+              <span className="text-xs sm:text-md md:text-xl font-bold text-foreground whitespace-nowrap truncate">Nijushi Digital</span>
             </div>
           </Link>
 
