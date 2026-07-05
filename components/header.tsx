@@ -249,7 +249,7 @@ export function Header({ locale }: HeaderProps) {
                                       )}
                                       </div>
                                     </button>
-                                    
+
             <button
               onClick={openMenu}
               className="p-2 -mr-2 text-foreground cursor-pointer hover:text-accent transition-colors duration-300"
