@@ -5,6 +5,7 @@ import { SocialLinks } from '@/components/social'
 import { Lightbulb, ShieldCheck, Users, Rocket } from 'lucide-react'
 import { defaultLocale, getDictionary, getLocalizedMetadata, isValidLocale } from '@/lib/i18n'
 import type { Metadata } from 'next'
+import { ScrollDownArrow } from '@/components/ui/scroll'
 
 export async function generateStaticParams() {
   return [{ locale: 'id' }, { locale: 'en' }]
@@ -32,30 +33,40 @@ export default async function AboutPage({ params }: AboutPageProps) {
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Header locale={locale} />
       <main className="flex-1">
-        <section className="max-w-3xl mx-auto px-4 py-15 text-center space-y-4">
+        <section className="max-w-3xl mx-auto px-4 pt-30 pb-15 text-center space-y-4">
+            <div>
           <h1 className="text-5xl md:text-6xl font-bold text-foreground text-balance leading-tight">
-            {dict.heroTitle}
+            {locale === 'id' ? 'Bukan Hanya Tentang Kami,' : 'Not Just About Us,'}
+            </h1>
+          <h1 className="text-5xl md:text-6xl font-bold text-foreground text-balance leading-tight">
+            {locale === 'id' ? 'Tapi Tentang ' : 'It\'s About '}
+            <span className="relative inline-block px-2 py-1">
+            <span className="absolute inset-0 bg-amber-300/70 -rotate-1 rounded-sm" />
+            <span className="relative text-foreground">{locale === 'id' ? 'Anda' : 'You'}</span>
+          </span>
           </h1>
+          </div>
           <p className="text-md md:text-lg text-muted-foreground text-balance">
             {dict.heroDescription}
           </p>
+        <ScrollDownArrow target="#vision" className="mt-15"/>
         </section>
 
         <div className="border-t border-border" />
 
-        <section className="max-w-4xl mx-auto px-4 py-15 text-center space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground">{dict.visionTitle}</h2>
-          <p className="text-2xl md:text-3xl font-semibold text-foreground text-balance">
+        <section id="vision" className="scroll-smooth scroll-mt-20 max-w-4xl mx-auto px-4 py-15 text-center space-y-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">{dict.visionTitle}</h2>
+          <p className="text-4xl md:text-5xl font-semibold text-foreground text-balance">
             {dict.visionLead}
           </p>
           <p className="text-sm md:text-base text-muted-foreground">{dict.visionSupport}</p>
         </section>
 
-        <div className="border-t border-border" />
 
-        <section className="max-w-7xl mx-auto px-4 py-15">
+
+        <section className="max-w-7xl mx-auto px-4 pb-15">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">{dict.missionTitle}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">{dict.missionTitle}</h2>
             <p className="text-md text-muted-foreground max-w-xl mx-auto">{dict.missionDescription}</p>
           </div>
 

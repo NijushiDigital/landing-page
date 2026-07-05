@@ -1,16 +1,18 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Menu, Moon, Sun, X } from 'lucide-react'
+import ReactCountryFlag from "react-country-flag"
 import {
   getLocaleFromPathname,
   getLocalizedPath,
   getLocaleLabel,
   type Locale,
 } from '@/lib/i18n'
+import { RxGlobe2 } from "react-icons/rx";
 
 const MOBILE_MENU_ANIM_MS = 300
 
@@ -25,6 +27,36 @@ export function Header({ locale }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
+  const [scrolled, setScrolled] = useState(false)
+  const [skipTransition, setSkipTransition] = useState(true)
+
+  // Runs synchronously before paint whenever the route changes, so the
+  // header's width matches the real scroll position instantly instead of
+  // briefly rendering the "not scrolled" state and animating away from it.
+  useLayoutEffect(() => {
+    setSkipTransition(true)
+    setScrolled(window.scrollY > 24)
+
+    const id = window.requestAnimationFrame(() => setSkipTransition(false))
+    return () => window.cancelAnimationFrame(id)
+  }, [pathname])
+
+  useEffect(() => {
+    let ticking = false
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 24)
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const navLinks =
     resolvedLocale === 'id'
@@ -101,78 +133,136 @@ export function Header({ locale }: HeaderProps) {
   }, [isOpen])
 
   return (
-    <header className="bg-background border-b border-border sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 py-5 flex items-center justify-between">
-        <Link href={getLocalizedPath('/', resolvedLocale)}>
-          <div className="flex items-center gap-3">
-            <Image
-              src="/logo.png"
-              alt="Nijushi Digital Logo"
-              width={48}
-              height={48}
-              className="w-8 h-8"
-            />
-            <span className="text-xl font-bold text-foreground">Nijushi Digital</span>
-          </div>
-        </Link>
-
-        <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={getLocalizedPath(link.href, resolvedLocale)}
-              className="text-muted-foreground hover:text-foreground transition"
-            >
-              {link.name}
-            </Link>
-          ))}
-
-          <Link
-            href={getLocalizedPath('/social', resolvedLocale)}
-            className="px-4 py-2 rounded-md bg-orange-500 hover:bg-orange-600 text-white font-medium transition-colors duration-200"
-          >
-            {resolvedLocale === 'id' ? 'Hubungi Kami' : 'Contact Us'}
+    <>
+      <header
+        className={`sticky z-50 w-full ${
+          skipTransition ? '' : 'transition-all duration-300 ease-in-out'
+        } ${
+          scrolled
+            ? 'top-3 max-w-md md:max-w-2xl lg:max-w-5xl mx-auto rounded-full border border-border bg-background/80 backdrop-blur-md shadow-lg'
+            : 'top-0 max-w-full mx-auto rounded-none border-b border-transparent bg-transparent shadow-none'
+        }`}
+      >
+        <div
+          className={`mx-auto grid grid-cols-[1fr_auto_1fr] items-center ${
+            skipTransition ? '' : 'transition-all duration-300 ease-in-out'
+          } ${
+            scrolled ? 'max-w-5xl px-6 py-3' : 'max-w-7xl px-7 py-5'
+          }`}
+        >
+          <Link href={getLocalizedPath('/', resolvedLocale)} className="justify-self-start">
+            <div className="flex items-center gap-3">
+              <Image
+                src="/logo.png"
+                alt="Nijushi Digital Logo"
+                width={48}
+                height={48}
+                className="w-8 h-8"
+              />
+              <span className="text-xl font-bold text-foreground">Nijushi Digital</span>
+            </div>
           </Link>
-          <button
-            type="button"
-            onClick={switchLanguage}
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition"
-          >
-            {resolvedLocale === 'id' ? 'EN' : 'ID'}
-          </button>
-          <button
-            type="button"
-            onClick={toggleTheme}
-            className="rounded-full border border-border p-2 text-foreground hover:bg-accent/10 transition"
-            aria-label="Toggle dark mode"
-          >
-            {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-          </button>
-        </nav>
 
-        <div className="flex items-center gap-2 md:hidden">
-          <button
-            type="button"
-            onClick={toggleTheme}
-            className="rounded-full border border-border p-2 text-foreground hover:bg-accent/10 transition"
-            aria-label="Toggle dark mode"
+          <nav
+            className={`hidden lg:flex items-center justify-self-center ${
+              skipTransition ? '' : 'transition-all duration-300 ease-in-out'
+            } ${
+              scrolled ? 'gap-4' : 'gap-6'
+            }`}
           >
-            {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-          </button>
-          <button
-            onClick={openMenu}
-            className="p-2 -mr-2 text-foreground"
-            aria-label="Open menu"
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={getLocalizedPath(link.href, resolvedLocale)}
+                className="group relative inline-block whitespace-nowrap text-foreground py-1"
+              >
+                {link.name}
+                <span className="pointer-events-none absolute left-1/2 bottom-0 h-[1.5px] w-full origin-center -translate-x-1/2 scale-x-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100" />
+              </Link>
+            ))}
+          </nav>
+
+          <div
+            className={`hidden lg:flex items-center justify-self-end ${
+              skipTransition ? '' : 'transition-all duration-300 ease-in-out'
+            } ${
+              scrolled ? 'gap-4' : 'gap-4'
+            }`}
           >
-            <Menu className="w-7 h-7" />
-          </button>
+
+            <button
+              type="button"
+              onClick={switchLanguage}
+              className="text-lg cursor-pointer font-medium text-muted-foreground hover:text-foreground border border-border rounded-2xl transition"
+            >
+              <div className="px-3">
+              {resolvedLocale === 'id' ? (
+                <>
+                <div className="flex items-center gap-2">
+                <ReactCountryFlag countryCode="US" className="" svg />
+                <span>EN</span>
+                </div>
+                </>
+              ) : (
+                <>
+                <div className="flex items-center gap-2">
+                <ReactCountryFlag countryCode="ID" className="" svg />
+                <span>ID</span>
+                </div>
+                </>
+              )}
+              </div>
+            </button>
+
+
+            <Link
+              href={getLocalizedPath('/social', resolvedLocale)}
+              className="px-4 py-2 rounded-md bg-orange-500 hover:bg-orange-600 text-white font-medium transition-colors duration-200 whitespace-nowrap"
+            >
+              {resolvedLocale === 'id' ? 'Hubungi Kami' : 'Contact Us'}
+            </Link>
+            
+            
+          </div>
+
+          <div className="flex items-center gap-2 lg:hidden justify-self-end col-start-3">
+            <button
+                                      type="button"
+                                      onClick={switchLanguage}
+                                      className="text-lg font-medium text-muted-foreground hover:text-foreground border border-border rounded-2xl transition"
+                                    >
+                                      <div className="px-3">
+                                      {resolvedLocale === 'id' ? (
+                                        <>
+                                        <div className="flex items-center gap-2">
+                                        <ReactCountryFlag countryCode="US" className="" svg />
+                                        <span>EN</span>
+                                        </div>
+                                        </>
+                                      ) : (
+                                        <>
+                                        <div className="flex items-center gap-2">
+                                        <ReactCountryFlag countryCode="ID" className="" svg />
+                                        <span>ID</span>
+                                        </div>
+                                        </>
+                                      )}
+                                      </div>
+                                    </button>
+                                    
+            <button
+              onClick={openMenu}
+              className="p-2 -mr-2 text-foreground cursor-pointer hover:text-accent transition-colors duration-300"
+              aria-label="Open menu"
+            >
+              <Menu className="w-7 h-7" />
+            </button>
+          </div>
         </div>
-
-          
-      </div>
+      </header>
 
       {isOpen && (
-        <div className="md:hidden fixed inset-0 z-50">
+        <div className="lg:hidden fixed inset-0 z-50">
           <div
             className={`absolute inset-0 bg-black/50 backdrop-blur-sm duration-300 ${
               isClosing ? 'animate-out fade-out' : 'animate-in fade-in'
@@ -200,7 +290,7 @@ export function Header({ locale }: HeaderProps) {
               </div>
               <button
                 onClick={closeMenu}
-                className="p-2 -mr-2 text-foreground hover:rotate-90 transition-transform duration-300"
+                className="p-2 -mr-2 text-foreground hover:rotate-90 transition-transform duration-300 cursor-pointer hover:text-accent transition-colors duration-300"
                 aria-label="Close menu"
               >
                 <X className="w-6 h-6" />
@@ -229,39 +319,6 @@ export function Header({ locale }: HeaderProps) {
                 </Link>
               ))}
 
-              <button
-                type="button"
-                onClick={switchLanguage}
-                className={`mt-4 text-left text-lg font-medium text-foreground py-4 border-b border-border hover:text-accent hover:pl-2 transition-all duration-300 fill-mode-backwards ${
-                  isClosing
-                    ? 'animate-out fade-out slide-out-to-right-8'
-                    : 'animate-in fade-in slide-in-from-right-8'
-                }`}
-                style={{
-                  animationDelay: isClosing ? '0ms' : `${100 + navLinks.length * 80}ms`,
-                  animationDuration: '300ms',
-                }}
-              >
-                {getLocaleLabel(resolvedLocale)}
-              </button>
-
-              <button
-                type="button"
-                onClick={toggleTheme}
-                className={`mt-4 flex items-center gap-3 text-left text-lg font-medium text-foreground py-4 border-b border-border hover:text-accent hover:pl-2 transition-all duration-300 fill-mode-backwards ${
-                  isClosing
-                    ? 'animate-out fade-out slide-out-to-right-8'
-                    : 'animate-in fade-in slide-in-from-right-8'
-                }`}
-                style={{
-                  animationDelay: isClosing ? '0ms' : `${100 + navLinks.length * 80}ms`,
-                  animationDuration: '300ms',
-                }}
-              >
-                {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-                {theme === 'dark' ? 'Light mode' : 'Dark mode'}
-              </button>
-
               <Link
                 href={getLocalizedPath('/social', resolvedLocale)}
                 onClick={closeMenu}
@@ -277,10 +334,11 @@ export function Header({ locale }: HeaderProps) {
               >
                 {resolvedLocale === 'id' ? 'Hubungi Kami' : 'Contact Us'}
               </Link>
+
             </nav>
           </div>
         </div>
       )}
-    </header>
+    </>
   )
 }

@@ -16,7 +16,7 @@ export function Features({ locale = 'en' }: FeaturesProps) {
   const projectDict = getDictionary(locale).project
 
   return (
-    <section id="features" className="max-w-7xl mx-auto px-4 py-15 scroll-smooth scroll-mt-30">
+    <section id="features" className="max-w-7xl mx-auto px-4 py-15 scroll-smooth scroll-mt-15">
       <div className="text-center mb-16 space-y-4">
         <h2 className="text-4xl md:text-5xl font-bold text-foreground">{dict.featuresTitle}</h2>
         <p className="text-md text-muted-foreground max-w-xl mx-auto">

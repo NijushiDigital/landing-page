@@ -94,23 +94,23 @@ const dictionaries = {
     },
     about: {
       metadataTitle: 'Tentang',
-      heroTitle: 'Dunia Anda, Keputusan Anda',
+      heroTitle: '',
       heroDescription:
-        'Nijushi Digital adalah studio digital yang membangun website, alat, dan layanan praktis untuk individu dan bisnis yang ingin mengendalikan kehidupan digital mereka.',
+        'Nijushi Digital adalah studio digital yang membangun website, alat, dan layanan lainnya untuk individu maupun bisnis yang membutuhkan solusi digital yang andal. Semua nya dalam kendali Anda, bukan kami!',
       visionTitle: 'Visi Kami',
-      visionLead: 'Menjadi mitra digital yang dapat diandalkan, dipilih dengan bebas, dan tumbuh bersama.',
+      visionLead: '"Menjadi teman bisnis anda, bukan hanya mitra"',
       visionSupport:
-        'Kami percaya teknologi seharusnya bekerja untuk manusia, bukan sebaliknya. Segala yang kami bangun selalu berlandaskan prinsip itu.',
+        'Kami percaya bisnis yang sehat seharus menguntungkan kedua belah pihak, bukan hanya satu pihak.',
       missionTitle: 'Misi Kami',
       missionDescription: 'Prinsip yang menjadi panduan dalam setiap hal yang kami bangun di Nijushi Digital.',
       missions: [
         {
-          title: 'Bangun Produk yang Andal',
+          title: 'Membangun Produk Andal',
           description:
-            'Memberikan produk dan layanan digital yang cepat, terjangkau, dan benar-benar bermanfaat untuk kebutuhan sehari-hari.',
+            'Memberikan produk dan layanan digital yang cepat, terjangkau, dan benar-benar bermanfaat untuk kebutuhan setiap pihak.',
         },
         {
-          title: 'Hargai Otonomi Anda',
+          title: 'Selalu Transparan',
           description:
             'Mendesain solusi yang mengembalikan kendali kepada Anda — transparan, aman, dan bebas dari keterikatan yang tidak perlu.',
         },
@@ -202,25 +202,25 @@ const dictionaries = {
     },
     about: {
       metadataTitle: 'About',
-      heroTitle: 'Your World, Your Decision',
+      heroTitle: "",
       heroDescription:
-        'Nijushi Digital is a digital studio that builds practical websites, tools, and services for people and businesses who want more control over their digital lives.',
+        'Nijushi Digital is a digital studio that builds websites, tools and other services for individuals and businesses who need reliable digital solutions. Everything is in under your control, not ours!',
       visionTitle: 'Our Vision',
-      visionLead: 'To be a digital partner people can rely on, choose freely, and grow with.',
+      visionLead: '"Be your business friend, not just a partner"',
       visionSupport:
-        'We believe technology should work for people — not the other way around. Everything we build is guided by this principle.',
+        'We believe a healthy business should benefit both parties, not just one party.',
       missionTitle: 'Our Mission',
       missionDescription: 'The principles that guide everything we build at Nijushi Digital.',
       missions: [
         {
-          title: 'Build Reliable Products',
+          title: 'Building Reliable Products',
           description:
-            'Deliver digital products and services that are fast, affordable, and genuinely useful for everyday needs.',
+            "Providing digital products and services that are fast, affordable, and truly beneficial to each party's needs.",
         },
         {
-          title: 'Respect Your Autonomy',
+          title: 'Always Transparent',
           description:
-            'Design solutions that put control back in your hands — transparent, secure, and free from unnecessary lock-in.',
+            'Design solutions that return control to you — transparent, safe, and free from unnecessary attachments.',
         },
         {
           title: 'Grow With The Community',

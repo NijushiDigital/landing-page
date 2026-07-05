@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { getDictionary, getLocalizedPath, type Locale } from '@/lib/i18n'
+import { ScrollDownArrow } from './ui/scroll'
 
 type HeroProps = {
   locale?: Locale
@@ -9,7 +10,7 @@ export function Hero({ locale = 'en' }: HeroProps) {
   const dict = getDictionary(locale).home
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-35 text-center flex flex-col items-center gap-8">
+    <section className="max-w-7xl mx-auto px-4 pt-30 pb-15 text-center flex flex-col items-center gap-8">
       <div className="space-y-4 max-w-3xl">
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground text-balance leading-tight">
           Your World, Your{' '}
@@ -29,12 +30,7 @@ export function Hero({ locale = 'en' }: HeroProps) {
             {dict.heroButton}
           </Link>
         </div>
-<Link
-            href={'#features'}
-            className="px-5 py-3 underline text-xs hover:opacity-90 opacity-30"
-          >
-            {dict.scrollLanjut}
-          </Link>
+<ScrollDownArrow target="#features" className="mt-15"/>
 
       </div>
     </section>

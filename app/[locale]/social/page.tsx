@@ -30,9 +30,9 @@ export default async function SocialPage({ params }: SocialPageProps) {
   const reportContact = socials.find((s) => s.name === 'Nishia Customer Support') ?? socials[0]
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col overflow-x-hidden">
-      <Header locale={locale} />
-      <main className="flex-1 w-full overflow-x-hidden">
+<div className="min-h-screen bg-background text-foreground flex flex-col">
+  <Header locale={locale} />
+  <main className="flex-1 w-full">
         <section className="max-w-3xl mx-auto px-4 py-15 text-center space-y-4">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground">{dict.title}</h1>
           <p className="text-md text-muted-foreground max-w-xl mx-auto">{dict.description}</p>
