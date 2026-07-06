@@ -28,17 +28,11 @@ export function Header({ locale }: HeaderProps) {
   const [isClosing, setIsClosing] = useState(false)
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
   const [scrolled, setScrolled] = useState(false)
-  const [skipTransition, setSkipTransition] = useState(true)
-
-  // Runs synchronously before paint whenever the route changes, so the
-  // header's width matches the real scroll position instantly instead of
-  // briefly rendering the "not scrolled" state and animating away from it.
+  // Set initial scroll state synchronously before first paint so no
+  // transition runs on mount.  No skipTransition needed — the class
+  // only changes when the user actually scrolls past the threshold.
   useLayoutEffect(() => {
-    setSkipTransition(true)
     setScrolled(window.scrollY > 24)
-
-    const id = window.requestAnimationFrame(() => setSkipTransition(false))
-    return () => window.cancelAnimationFrame(id)
   }, [pathname])
 
   useEffect(() => {
@@ -135,19 +129,15 @@ export function Header({ locale }: HeaderProps) {
   return (
   <>
     <header
-      className={`sticky z-50 px-3 ${
-        skipTransition ? '' : 'transition-all duration-300 ease-in-out'
-      } ${
+      className={`sticky z-50 px-3 transition-all duration-200 ease-in-out ${
         scrolled
-          ? 'top-3 w-full max-w-5xl mx-auto rounded-full border border-border bg-background/80 backdrop-blur-md shadow-lg'
+          ? 'top-3 w-[calc(100%-1.5rem)] max-w-7xl mx-auto rounded-full border border-border bg-background/80 backdrop-blur-md shadow-lg'
           : 'top-0 w-full max-w-full mx-auto rounded-none border border-transparent bg-background/0 backdrop-blur-md shadow-none'
       }`}
     >
       <div
-        className={`mx-auto grid grid-cols-[1fr_auto_1fr] items-center ${
-          skipTransition ? '' : 'transition-all duration-300 ease-in-out'
-        } ${
-          scrolled ? 'max-w-5xl px-4 sm:px-6 py-3' : 'max-w-full md:max-w-7xl px-4 sm:px-5 md:px-7 py-5'
+        className={`mx-auto grid grid-cols-[1fr_auto_1fr] items-center transition-all duration-300 ease-in-out ${
+          scrolled ? 'max-w-7xl px-4 sm:px-6 py-3' : 'max-w-full md:max-w-7xl px-4 sm:px-5 md:px-7 py-5'
         }`}
       >
           <Link href={getLocalizedPath('/', resolvedLocale)} className="justify-self-start min-w-0">
@@ -164,9 +154,7 @@ export function Header({ locale }: HeaderProps) {
           </Link>
 
           <nav
-            className={`hidden lg:flex items-center justify-self-center ${
-              skipTransition ? '' : 'transition-all duration-300 ease-in-out'
-            } ${
+            className={`hidden lg:flex items-center justify-self-center transition-all duration-300 ease-in-out ${
               scrolled ? 'gap-4' : 'gap-6'
             }`}
           >
@@ -183,9 +171,7 @@ export function Header({ locale }: HeaderProps) {
           </nav>
 
           <div
-            className={`hidden lg:flex items-center justify-self-end ${
-              skipTransition ? '' : 'transition-all duration-300 ease-in-out'
-            } ${
+            className={`hidden lg:flex items-center justify-self-end transition-all duration-300 ease-in-out ${
               scrolled ? 'gap-4' : 'gap-4'
             }`}
           >
