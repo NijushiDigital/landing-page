@@ -98,7 +98,7 @@ const dictionaries = {
       heroDescription:
         'Nijushi Digital adalah studio digital yang membangun website, alat, dan layanan lainnya untuk individu maupun bisnis yang membutuhkan solusi digital yang andal. Semua nya dalam kendali Anda, bukan kami!',
       visionTitle: 'Visi Kami',
-      visionLead: '"Menjadi teman bisnis anda, bukan hanya mitra"',
+      visionLead: '"Menjadi partner bisnis terbaik anda"',
       visionSupport:
         'Kami percaya bisnis yang sehat seharus menguntungkan kedua belah pihak, bukan hanya satu pihak.',
       missionTitle: 'Misi Kami',
@@ -206,7 +206,7 @@ const dictionaries = {
       heroDescription:
         'Nijushi Digital is a digital studio that builds websites, tools and other services for individuals and businesses who need reliable digital solutions. Everything is in under your control, not ours!',
       visionTitle: 'Our Vision',
-      visionLead: '"Be your business friend, not just a partner"',
+      visionLead: '"Be your best business partner"',
       visionSupport:
         'We believe a healthy business should benefit both parties, not just one party.',
       missionTitle: 'Our Mission',
