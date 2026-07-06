@@ -139,8 +139,8 @@ export function Header({ locale }: HeaderProps) {
         skipTransition ? '' : 'transition-all duration-300 ease-in-out'
       } ${
         scrolled
-          ? 'top-3 w-[calc(100%-1.5rem)] xs:max-w-60 sm:max-w-xl md:max-w-2xl lg:max-w-5xl left-0 right-0 mx-auto rounded-full border border-border bg-background/80 backdrop-blur-md shadow-lg'
-          : 'top-0 w-full max-w-full mx-auto rounded-none border-b border-transparent bg-transparent shadow-none'
+          ? 'top-3 w-full max-w-5xl mx-auto rounded-full border border-border bg-background/80 backdrop-blur-md shadow-lg'
+          : 'top-0 w-full max-w-full mx-auto rounded-none border border-transparent bg-background/0 backdrop-blur-md shadow-none'
       }`}
     >
       <div

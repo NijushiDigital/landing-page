@@ -26,7 +26,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
   return (
     <>
       <Header locale={locale} />
-      <main className="max-w-3xl mx-auto px-4 py-16">
+      <main className="max-w-3xl mx-auto px-4 pt-24 pb-16">
         <p className="text-sm text-muted-foreground mb-2">Last updated: July 4, 2026</p>
         <h1 className="text-3xl font-bold text-foreground mb-6">Terms of Service</h1>
         <p className="text-muted-foreground mb-10">
