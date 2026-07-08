@@ -12,22 +12,22 @@ export async function generateStaticParams() {
   return [{ locale: 'id' }, { locale: 'en' }]
 }
 
-type ProjectPageProps = {
+type ProductPageProps = {
   params: Promise<{ locale?: string }>
 }
 
-export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const resolvedParams = await params
   const locale = isValidLocale(resolvedParams.locale) ? resolvedParams.locale : defaultLocale
-  const dict = getDictionary(locale).project
+  const dict = getDictionary(locale).product
 
-  return getLocalizedMetadata(locale, dict.metadataTitle, dict.description, '/project')
+  return getLocalizedMetadata(locale, dict.metadataTitle, dict.description, '/product')
 }
 
-export default async function ProjectPage({ params }: ProjectPageProps) {
+export default async function ProductPage({ params }: ProductPageProps) {
   const resolvedParams = await params
   const locale = isValidLocale(resolvedParams.locale) ? resolvedParams.locale : defaultLocale
-  const dict = getDictionary(locale).project
+  const dict = getDictionary(locale).product
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
@@ -50,7 +50,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <div className="flex items-center gap-4 mt-auto">
                   <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline">
                     <ExternalLink className="w-4 h-4" />
-                    {dict.visitProject}
+                    {dict.visitProduct}
                   </a>
                   {project.github && (
                     <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:underline">

@@ -70,7 +70,7 @@ const dictionaries = {
   id: {
     nav: {
       home: 'Beranda',
-      project: 'Proyek',
+      product: 'Produk',
       about: 'Tentang Perusahaan',
       contact: 'Hubungi Kami',
       switchLanguage: 'Ganti Bahasa',
@@ -81,10 +81,10 @@ const dictionaries = {
         'Wujudkan masa depan digital Anda dengan solusi cerdas yang dirancang untuk mereka yang menghargai kendali dan otonomi.',
       heroButton: 'Pelajari Lebih Lanjut',
       scrollLanjut: 'Scroll Untuk Melanjutkan Membaca',
-      featuresTitle: 'Proyek Kami',
+      featuresTitle: 'Produk Kami',
       featuresDescription:
-        'Nijushi Digital berkomitmen untuk terus menghadirkan proyek dan layanan yang dapat membantu banyak pihak, dan berikut beberapa yang telah kami kerjakan:',
-      featuresButton: 'Lihat Semua Proyek',
+        'Nijushi Digital berkomitmen untuk terus menghadirkan produk dan layanan yang dapat membantu banyak pihak, dan berikut beberapa yang telah kami kerjakan:',
+      featuresButton: 'Lihat Semua Produk',
       socialTitle: 'Mari Terhubung',
       socialDescription:
         'Ikuti kami di media sosial untuk pembaruan, berita, dan konten di balik layar.',
@@ -126,12 +126,12 @@ const dictionaries = {
         },
       ],
     },
-    project: {
-      metadataTitle: 'Proyek',
-      title: 'Proyek Kami',
+    product: {
+      metadataTitle: 'Produk',
+      title: 'Produk Kami',
       description:
         'Daftar lengkap produk, situs web, dan alat yang telah dibangun dan dirawat oleh Nijushi Digital untuk membantu individu dan bisnis menemukan #YourDecision.',
-      visitProject: 'Kunjungi Proyek',
+      visitProduct: 'Kunjungi Produk',
       github: 'GitHub',
     },
     social: {
@@ -159,7 +159,7 @@ const dictionaries = {
       legal: 'Hukum',
       home: 'Beranda',
       about: 'Tentang Perusahaan',
-      project: 'Proyek',
+      product: 'Produk',
       privacy: 'Kebijakan Privasi',
       terms: 'Ketentuan Layanan',
       servicesFee: 'Kebijakan Biaya Layanan',
@@ -178,7 +178,7 @@ const dictionaries = {
   en: {
     nav: {
       home: 'Home',
-      project: 'Project',
+      product: 'Product',
       about: 'About Company',
       contact: 'Contact Us',
       switchLanguage: 'Switch Language',
@@ -189,10 +189,10 @@ const dictionaries = {
         'Empower your digital future with intelligent solutions designed for those who value control and autonomy.',
       heroButton: 'Learn More',
       scrollLanjut: 'Scroll To Continue Reading',
-      featuresTitle: 'Our Projects',
+      featuresTitle: 'Our Products',
       featuresDescription:
-        'Nijushi Digital strives to always provide and create projects and services that can help many parties, and here are some of the ones we have worked on:',
-      featuresButton: 'See All Projects',
+        'Nijushi Digital strives to always provide and create products and services that can help many parties, and here are some of the ones we have worked on:',
+      featuresButton: 'See All Products',
       socialTitle: "Let's Connect",
       socialDescription:
         'Follow us on social media for updates, news, and behind-the-scenes content.',
@@ -234,12 +234,12 @@ const dictionaries = {
         },
       ],
     },
-    project: {
-      metadataTitle: 'Projects',
-      title: 'Our Projects',
+    product: {
+      metadataTitle: 'Products',
+      title: 'Our Products',
       description:
         'A full list of products, websites, and tools that Nijushi Digital has built and maintained to help individuals and businesses find #YourDecision.',
-      visitProject: 'Visit Project',
+      visitProduct: 'Visit Product',
       github: 'GitHub',
     },
     social: {
@@ -267,7 +267,7 @@ const dictionaries = {
       legal: 'Legal',
       home: 'Home',
       about: 'About Company',
-      project: 'Project',
+      product: 'Product',
       privacy: 'Privacy Policy',
       terms: 'Terms of Service',
       cookiePolicy: 'Cookie Policy',

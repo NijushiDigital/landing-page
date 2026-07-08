@@ -8,18 +8,18 @@ import { FaGithub } from 'react-icons/fa'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Project',
-  description: 'Explore the full list of projects and services built by Nijushi Digital.',
+  title: 'Product',
+  description: 'Explore the full list of products and services built by Nijushi Digital.',
 }
 
-export default function ProjectPage() {
+export default function ProductPage() {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Header />
       <main className="flex-1">
         <section className="max-w-7xl mx-auto px-4 py-15">
           <div className="text-center mb-16 space-y-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground">Our Projects</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground">Our Products</h1>
             <p className="text-md text-muted-foreground max-w-xl mx-auto">
               A full list of products, websites, and tools that Nijushi Digital has built and
               maintained to help individuals and businesses find #YourDecision.
@@ -62,7 +62,7 @@ export default function ProjectPage() {
                     className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
                   >
                     <ExternalLink className="w-4 h-4" />
-                    Visit Project
+                    Visit Product
                   </a>
 
                   {project.github && (

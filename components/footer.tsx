@@ -87,8 +87,8 @@ export function Footer({ locale = 'en' }: FooterProps) {
                   </Link>
                 </li>
                 <li>
-                  <Link href={getLocalizedPath('/project', locale)} className="hover:text-primary-foreground transition dark:hover:text-[#f5f7ff]">
-                    {dict.project}
+                  <Link href={getLocalizedPath('/product', locale)} className="hover:text-primary-foreground transition dark:hover:text-[#f5f7ff]">
+                    {dict.product}
                   </Link>
                 </li>
                 <li>

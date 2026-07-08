@@ -13,7 +13,7 @@ type FeaturesProps = {
 
 export function Features({ locale = 'en' }: FeaturesProps) {
   const dict = getDictionary(locale).home
-  const projectDict = getDictionary(locale).project
+  const productDict = getDictionary(locale).product
 
   return (
     <section id="features" className="max-w-7xl mx-auto px-4 py-15 scroll-smooth scroll-mt-15">
@@ -54,7 +54,7 @@ export function Features({ locale = 'en' }: FeaturesProps) {
                 className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
               >
                 <ExternalLink className="w-4 h-4" />
-                {projectDict.visitProject}
+                {productDict.visitProduct}
               </a>
 
               {project.github && (
@@ -65,7 +65,7 @@ export function Features({ locale = 'en' }: FeaturesProps) {
                   className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:underline"
                 >
                   <FaGithub className="w-4 h-4" />
-                  {projectDict.github}
+                {productDict.github}
                 </a>
               )}
             </div>
@@ -75,7 +75,7 @@ export function Features({ locale = 'en' }: FeaturesProps) {
 
       <div className="flex justify-center mt-12">
         <Link
-          href={getLocalizedPath('/project', locale)}
+          href={getLocalizedPath('/product', locale)}
           className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-foreground font-semibold hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
         >
           {dict.featuresButton}

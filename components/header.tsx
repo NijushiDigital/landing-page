@@ -56,12 +56,12 @@ export function Header({ locale }: HeaderProps) {
     resolvedLocale === 'id'
       ? [
           { name: 'Beranda', href: '/' },
-          { name: 'Proyek', href: '/project' },
+          { name: 'Produk', href: '/product' },
           { name: 'Tentang Perusahaan', href: '/about' },
         ]
       : [
           { name: 'Home', href: '/' },
-          { name: 'Project', href: '/project' },
+          { name: 'Product', href: '/product' },
           { name: 'About Company', href: '/about' },
         ]
 
