@@ -2,9 +2,16 @@
 
 import { useEffect, useState } from 'react'
 
-export function LoadingScreen() {
+export function LoadingScreen({ onFinish }: { onFinish?: () => void }) {
   const [progress, setProgress] = useState(0)
   const [exit, setExit] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  // Fade-in on mount
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => setMounted(true))
+    return () => cancelAnimationFrame(raf)
+  }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -22,20 +29,23 @@ export function LoadingScreen() {
     return () => clearInterval(interval)
   }, [])
 
-  // Auto-exit after progress completes + delay
+  // Auto-exit after progress completes + delay, then notify parent
   useEffect(() => {
     if (progress >= 100) {
-      const timer = setTimeout(() => setExit(true), 400)
+      const timer = setTimeout(() => {
+        setExit(true)
+        onFinish?.()
+      }, 400)
       return () => clearTimeout(timer)
     }
-  }, [progress])
+  }, [progress, onFinish])
 
   if (exit) return null
 
   return (
     <div
       className={`fixed inset-0 z-[9999] flex items-center justify-center transition-opacity duration-500 ${
-        progress >= 100 ? 'opacity-0' : 'opacity-100'
+        progress >= 100 ? 'opacity-0' : mounted ? 'opacity-100' : 'opacity-0'
       }`}
     >
       {/* Animated gradient background */}

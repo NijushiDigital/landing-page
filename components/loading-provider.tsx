@@ -9,11 +9,9 @@ export function LoadingProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true)
   const prevPath = useRef(pathname)
 
-  // Initial load
+  // Initial load — LoadingScreen calls onFinish when done
   useEffect(() => {
-    setLoading(true)
-    const timer = setTimeout(() => setLoading(false), 1200)
-    return () => clearTimeout(timer)
+    // loading already true from useState
   }, [])
 
   // Route change detection
@@ -21,14 +19,12 @@ export function LoadingProvider({ children }: { children: React.ReactNode }) {
     if (prevPath.current !== pathname) {
       setLoading(true)
       prevPath.current = pathname
-      const timer = setTimeout(() => setLoading(false), 800)
-      return () => clearTimeout(timer)
     }
   }, [pathname])
 
   return (
     <>
-      {loading && <LoadingScreen />}
+      {loading && <LoadingScreen onFinish={() => setLoading(false)} />}
       {children}
     </>
   )
