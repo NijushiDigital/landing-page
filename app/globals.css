@@ -153,11 +153,6 @@ html.dark .border-border {
     scroll-padding-top: 6rem;
   }
 
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(200%); }
-}
-
 /* Turn off smooth scroll if user prefers reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {

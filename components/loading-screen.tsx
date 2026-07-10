@@ -1,11 +1,15 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
+
+type Stage = 'dom' | 'load' | 'fonts' | 'settle' | 'done'
 
 export function LoadingScreen({ onFinish }: { onFinish?: () => void }) {
   const [progress, setProgress] = useState(0)
   const [exit, setExit] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const stageRef = useRef<Stage>('dom')
+  const settledRef = useRef(false)
 
   // Fade-in on mount
   useEffect(() => {
@@ -13,29 +17,67 @@ export function LoadingScreen({ onFinish }: { onFinish?: () => void }) {
     return () => cancelAnimationFrame(raf)
   }, [])
 
+  // Track real loading milestones
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((p) => {
-        if (p >= 100) {
-          clearInterval(interval)
-          return 100
-        }
-        // Ease: slow start, fast middle, slow end
-        const inc = p < 30 ? 1.5 : p < 70 ? 3 : 1
-        return Math.min(p + inc, 100)
+    // Stage 1: DOM ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        stageRef.current = 'load'
+        setProgress(30)
       })
-    }, 40)
+    } else {
+      stageRef.current = 'load'
+      setProgress(30)
+    }
 
-    return () => clearInterval(interval)
+    // Stage 2: Window load (images, stylesheets, etc.)
+    if (document.readyState !== 'complete') {
+      window.addEventListener('load', () => {
+        stageRef.current = 'fonts'
+        setProgress(70)
+      })
+    } else {
+      stageRef.current = 'fonts'
+      setProgress(70)
+    }
+
+    // Stage 3: Fonts loaded
+    document.fonts.ready.then(() => {
+      stageRef.current = 'settle'
+      setProgress(90)
+    })
+
+    // Stage 4: Settle — give a moment for layout/paint
+    const settleTimer = setTimeout(() => {
+      if (!settledRef.current) {
+        settledRef.current = true
+        stageRef.current = 'done'
+        setProgress(100)
+      }
+    }, 600)
+
+    // Safety net: force complete after 5s
+    const safetyTimer = setTimeout(() => {
+      if (!settledRef.current) {
+        settledRef.current = true
+        stageRef.current = 'done'
+        setProgress(100)
+      }
+    }, 5000)
+
+    return () => {
+      clearTimeout(settleTimer)
+      clearTimeout(safetyTimer)
+    }
   }, [])
 
-  // Auto-exit after progress completes + delay, then notify parent
+  // Auto-exit after progress completes + fade-out delay
   useEffect(() => {
     if (progress >= 100) {
       const timer = setTimeout(() => {
         setExit(true)
         onFinish?.()
-      }, 400)
+      }, 500)
       return () => clearTimeout(timer)
     }
   }, [progress, onFinish])
@@ -86,7 +128,7 @@ export function LoadingScreen({ onFinish }: { onFinish?: () => void }) {
         <div className="w-48 space-y-2">
           <div className="h-[2px] overflow-hidden rounded-full bg-accent/10">
             <div
-              className="h-full rounded-full bg-accent transition-all duration-200 ease-out"
+              className="h-full rounded-full bg-accent transition-all duration-300 ease-out"
               style={{ width: `${progress}%` }}
             />
           </div>
